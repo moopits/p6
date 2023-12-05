@@ -186,3 +186,104 @@ footer nav ul {
 	margin: 2em
 }
 
+/* NEW */
+#portfolio  .containerButtons {
+	width: 100%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 25px;
+	/*border: 1px solid red;*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.style {
+	font-family: 'Syne'; /*font*/
+	font-weight: 700;
+	font-size: 1.2em;
+	color: #1D6154;
+}
+
+.containerButtons .tous {
+	background-color: #ffffff;
+	border: 1px solid #1D6154;
+	width: auto;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 0.4em;
+	padding-top: 0.4em;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	border-radius: 60px;
+}
+
+.containerButtons .objets {
+	background-color: #ffffff;
+	border: 1px solid #1D6154;;
+	width: auto;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 0.4em;
+	padding-top: 0.4em;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	border-radius: 60px;
+}
+
+.containerButtons .appartements {
+	background-color: #ffffff;
+	border: 1px solid #1D6154;;
+	width: auto;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 0.4em;
+	padding-top: 0.4em;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	border-radius: 60px;
+}
+
+.containerButtons .hotelsEtRestaurants {
+	background-color: #ffffff;
+	border: 1px solid #1D6154;;
+	width: auto;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 0.4em;
+	padding-top: 0.4em;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	border-radius: 60px;
+}
+
+.tous:hover {
+	background-color: #1D6154;
+	color: white;
+}
+
+.objets:hover {
+	background-color: #1D6154;
+	color: white;
+}
+
+.appartements:hover {
+	background-color: #1D6154;
+	color: white;
+}
+
+.hotelsEtRestaurants:hover {
+	background-color: #1D6154;
+	color: white;
+}
+
