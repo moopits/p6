@@ -15,8 +15,8 @@ export default function() {
 
 	for (let i = 0; i < 4; i++) { // repete slides.lenght fois
 		const button = document.createElement("button") // cré une 'div'
-		button.classList.add("style") // ajoute une class 'dot' dans la 'div'
-        button.classList.add("tous") // ajoute une class 'dot' dans la 'div'
+		button.classList.add("styleFont") // ajoute une class 'dot' dans la 'div'
+        button.classList.add("styleShape") // ajoute une class 'dot' dans la 'div'
         /*button.id = "myButton";*/
         button.type = "button";
         button.innerText = buttonName[i];
