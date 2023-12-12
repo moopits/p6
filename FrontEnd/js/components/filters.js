@@ -25,11 +25,7 @@ export default function() {
         createFilterJobs.appendChild(button) // ajoute le tout entre le container('div) avec la class "dots"
     }
 }
-/*  LE BON code de sheCodes AI
-const button = document.createElement("button");
 
-document.body.appendChild(button);
-*/
 
 
 
