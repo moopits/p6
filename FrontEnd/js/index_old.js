@@ -27,5 +27,5 @@ getWorks().then(data => createGallery(data))
 
 createButtonJobs()
 
-
+console.log(data)
 
