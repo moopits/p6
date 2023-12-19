@@ -47,11 +47,14 @@ console.log(containerButtons_filter.length)
 
 let categoryId = null
 
+fetch('http://localhost:5678/api/works')
+.then((response) => response.json())
+.then((data) => {
+
 for (let index = 0; index < containerButtons_filter.length; index++) {
+
         containerButtons_filter[index].addEventListener('click', (event) => { /*conserver event*/
-            fetch('http://localhost:5678/api/works')
-            .then((response) => response.json())
-            .then((data) => {
+
                 if(index === 0) {
                     categoryId = data
                 } else {
@@ -60,7 +63,8 @@ for (let index = 0; index < containerButtons_filter.length; index++) {
             console.log('button:  ' + index + '  -  categoryId:  ' + index)
             console.log(categoryId)        
         })
-    })
-}
+    }
+})
+
 
 
