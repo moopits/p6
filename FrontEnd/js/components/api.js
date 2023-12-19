@@ -1,7 +1,16 @@
 
 const CATEGORIES_URL = 'http://localhost:5678/api/categories'
-
 const WORK_URL = 'http://localhost:5678/api/works'
+
+
+
+
+export const getWorks = () => fetch(WORK_URL).then(data => data.json())
+export const getCategories = () => fetch(CATEGORIES_URL).then(data => data.json())
+
+
+
+
 
 /*fetch(url)
   .then((response) => response.json())
@@ -18,9 +27,6 @@ const WORK_URL = 'http://localhost:5678/api/works'
   .then((data) => console.log(data));
 
 
-export const getWorks = () => fetch(WORK_URL).then(data => data.json())
-
-
 fetch(WORK_URL) /* url */
 .then((response) => {
   if (response.status === 200) {
@@ -30,3 +36,50 @@ fetch(WORK_URL) /* url */
   }
 })
 .then((data) => console.log(data));
+
+console.log()
+
+/* extraction des categoryId de la BD works(WORK_URL) */
+fetch(WORK_URL)
+  .then((response) => response.json())
+  .then((data) => {
+    // Méthode filter() (recuperer length bd CATEGORY)
+    /* CREER un index category.lentgh ->  categoryId[category.lentgh] */
+    /* creer tableau length BD category*/
+    
+    const categoryId_1 = data.filter((item) => item.categoryId === 1);
+    const categoryId_2 = data.filter((item) => item.categoryId === 2);
+    const categoryId_3 = data.filter((item) => item.categoryId === 3);
+
+    console.log(categoryId_1); // [ { id: 2, name: 'Appartements' } ]
+    console.log(categoryId_2); // [ { id: 2, name: 'Appartements' } ]
+    console.log(categoryId_3); // [ { id: 2, name: 'Appartements' } ]
+
+  });
+
+
+
+
+
+/*const url = 'https://example.com/api/data';
+
+fetch(url)
+  .then((response) => response.json())
+  .then((data) => {
+    // Méthode d'indexation
+    const data2 = data[1];
+    console.log(data2); // { id: 2, name: 'Appartements' }
+
+    // Méthode find()
+    const data2 = data.find((item) => item.id === 2);
+    console.log(data2); // { id: 2, name: 'Appartements' }
+
+    // Méthode filter()
+    const data2 = data.filter((item) => item.id === 2);
+    console.log(data2); // [ { id: 2, name: 'Appartements' } ]
+
+    // Méthode slice()
+    const data2 = data.slice(1, 2);
+    console.log(data2); // { id: 2, name: 'Appartements' }
+  });
+  */
