@@ -32,7 +32,21 @@ const createCategories = data => {
     buttonAll.classList.add("styleShape")
     buttonAll.classList.add("filter-active")
     buttonAll.innerText = "Tous";
-    buttonAll.addEventListener('click', () => getWorks().then(data => createGallery(data)))
+    //buttonAll.addEventListener('click', () => getWorks().then(data => createGallery(data)))
+    
+    buttonAll.addEventListener('click', () => {
+        const buttonBkgRemove = document.querySelectorAll('.containerButtons button')
+        console.log(buttonBkgRemove)
+        buttonBkgRemove.forEach(dot => dot.classList.remove("filter-active"));
+        buttonBkgRemove[0].classList.add("filter-active")
+
+        return getWorks().then(worksTous => { // bouton # 1 ONLY
+            const filteredData = worksTous
+            console.log(worksTous)
+            createGallery(worksTous)
+        })
+    })
+    
     filterContainer.appendChild(buttonAll)
 
     for (let i = 0; i < data.length; i++) {
@@ -43,9 +57,14 @@ const createCategories = data => {
 
         button.innerText = data[i].name;
 
-        button.addEventListener('click', () => { /*conserver event*/
-            return getWorks().then(works => {
-                const filteredData = works.filter(item => item.categoryId === data[i].id)
+        button.addEventListener('click', () => { // bouton # 1 -> # infini
+            const buttonBkgRemove = document.querySelectorAll('.containerButtons button')
+            console.log(buttonBkgRemove)
+            buttonBkgRemove.forEach(dot => dot.classList.remove("filter-active"));
+            buttonBkgRemove[1 + i].classList.add("filter-active")
+                
+            return getWorks().then(works_dataLength => {
+                const filteredData = works_dataLength.filter(item => item.categoryId === data[i].id)
                 console.log(filteredData)
                 createGallery(filteredData)
             })
