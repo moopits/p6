@@ -16,46 +16,46 @@ export const getCategories = () => fetch(CATEGORIES_URL).then(data => data.json(
   .then((response) => response.json())
   .then((data) => console.log(data))*/
 
-  fetch(CATEGORIES_URL) /* url */
-  .then((response) => {
-    if (response.status === 200) {
-      return response.json();
-    } else {
-      throw new Error("Erreur de requête");
-    }
-  })
-  .then((data) => console.log(data));
+  // fetch(CATEGORIES_URL) /* url */
+  // .then((response) => {
+  //   if (response.status === 200) {
+  //     return response.json();
+  //   } else {
+  //     throw new Error("Erreur de requête");
+  //   }
+  // })
+  // .then((data) => console.log(data));
 
 
-fetch(WORK_URL) /* url */
-.then((response) => {
-  if (response.status === 200) {
-    return response.json();
-  } else {
-    throw new Error("Erreur de requête");
-  }
-})
-.then((data) => console.log(data));
+// fetch(WORK_URL) /* url */
+// .then((response) => {
+//   if (response.status === 200) {
+//     return response.json();
+//   } else {
+//     throw new Error("Erreur de requête");
+//   }
+// })
+// .then((data) => console.log(data));
 
-console.log()
+// console.log()
 
-/* extraction des categoryId de la BD works(WORK_URL) */
-fetch(WORK_URL)
-  .then((response) => response.json())
-  .then((data) => {
-    // Méthode filter() (recuperer length bd CATEGORY)
-    /* CREER un index category.lentgh ->  categoryId[category.lentgh] */
-    /* creer tableau length BD category*/
+// /* extraction des categoryId de la BD works(WORK_URL) */
+// fetch(WORK_URL)
+//   .then((response) => response.json())
+//   .then((data) => {
+//     // Méthode filter() (recuperer length bd CATEGORY)
+//     /* CREER un index category.lentgh ->  categoryId[category.lentgh] */
+//     /* creer tableau length BD category*/
     
-    const categoryId_1 = data.filter((item) => item.categoryId === 1);
-    const categoryId_2 = data.filter((item) => item.categoryId === 2);
-    const categoryId_3 = data.filter((item) => item.categoryId === 3);
+//     const categoryId_1 = data.filter((item) => item.categoryId === 1);
+//     const categoryId_2 = data.filter((item) => item.categoryId === 2);
+//     const categoryId_3 = data.filter((item) => item.categoryId === 3);
 
-    console.log(categoryId_1); // [ { id: 2, name: 'Appartements' } ]
-    console.log(categoryId_2); // [ { id: 2, name: 'Appartements' } ]
-    console.log(categoryId_3); // [ { id: 2, name: 'Appartements' } ]
+//     console.log(categoryId_1); // [ { id: 2, name: 'Appartements' } ]
+//     console.log(categoryId_2); // [ { id: 2, name: 'Appartements' } ]
+//     console.log(categoryId_3); // [ { id: 2, name: 'Appartements' } ]
 
-  });
+//   });
 
 
 
