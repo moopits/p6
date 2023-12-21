@@ -27,50 +27,59 @@ const createGallery = data => {
 
 const createCategories = data => {
 
-    const buttonAll = document.createElement("button")
-    buttonAll.classList.add("styleFont")
-    buttonAll.classList.add("styleShape")
-    buttonAll.classList.add("filter-active")
-    buttonAll.innerText = "Tous";
-    //buttonAll.addEventListener('click', () => getWorks().then(data => createGallery(data)))
+    const buttonTous = document.createElement("button")
+    buttonTous.classList.add("styleFont")
+    buttonTous.classList.add("styleShape")
+    buttonTous.classList.add("filter-active")
+    buttonTous.innerText = "Tous";
+    //buttonTous.addEventListener('click', () => getWorks().then(data => createGallery(data)))
     
-    buttonAll.addEventListener('click', () => {
+    // add event on button
+    buttonTous.addEventListener('click', () => {
+        //remove class="filter-active" toall bkg color button
         const buttonBkgRemove = document.querySelectorAll('.containerButtons button')
         console.log(buttonBkgRemove)
-        buttonBkgRemove.forEach(dot => dot.classList.remove("filter-active"));
+        buttonBkgRemove.forEach(element => element.classList.remove("filter-active"));
+        // add bkg to button
         buttonBkgRemove[0].classList.add("filter-active")
 
-        return getWorks().then(worksTous => { // bouton # 1 ONLY
-            const filteredData = worksTous
+        return getWorks().then(worksTous => {
             console.log(worksTous)
-            createGallery(worksTous)
+            const filteredData = worksTous
+            console.log(filteredData)
+            createGallery(filteredData)
         })
     })
-    
-    filterContainer.appendChild(buttonAll)
+    // add <button> 'Tous' in <div class="containerButtons">
+    filterContainer.appendChild(buttonTous)
 
+    // create buttons loop with 'name from categories db' with categories.length
     for (let i = 0; i < data.length; i++) {
-        const button = document.createElement("button")
-        button.classList.add("button" + i)
-        button.classList.add("styleFont")
-        button.classList.add("styleShape")
+        const buttonOthers = document.createElement("button")
+        buttonOthers.classList.add("button" + i)
+        buttonOthers.classList.add("styleFont")
+        buttonOthers.classList.add("styleShape")
 
-        button.innerText = data[i].name;
+        buttonOthers.innerText = data[i].name;
 
-        button.addEventListener('click', () => { // bouton # 1 -> # infini
+        // add event on button
+        buttonOthers.addEventListener('click', () => {
+            //remove class="filter-active" toall bkg color button
             const buttonBkgRemove = document.querySelectorAll('.containerButtons button')
             console.log(buttonBkgRemove)
-            buttonBkgRemove.forEach(dot => dot.classList.remove("filter-active"));
+            buttonBkgRemove.forEach(element => element.classList.remove("filter-active"));
+            // add bkg to button
             buttonBkgRemove[1 + i].classList.add("filter-active")
                 
             return getWorks().then(works_dataLength => {
+                console.log(works_dataLength)
                 const filteredData = works_dataLength.filter(item => item.categoryId === data[i].id)
                 console.log(filteredData)
                 createGallery(filteredData)
             })
         })
-
-        filterContainer.appendChild(button)
+        // add <button> 'name from categories db' in <div class="containerButtons">
+        filterContainer.appendChild(buttonOthers)
     }
 }
 
