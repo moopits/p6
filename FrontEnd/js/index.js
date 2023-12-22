@@ -88,11 +88,18 @@ getWorks().then(data => createGallery(data))
 /* build categories */
 getCategories().then(data => createCategories(data))
 
+
+
+
+
+
+
 /* build buttons filter */
 // createButtonJobs()
 
-
-
+// SET tuto test
+//const nombres = [2, 3, 4, 4, 2, 2, 2, 4, 4, 5, 5, 6, 6, 7, 5, 32, 3, 4, 5];
+//console.log([...new Set(nombres)]);
 
 
 
