@@ -145,7 +145,7 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	padding: 50px 0;
 }
 
 section {
@@ -285,9 +285,11 @@ input[type="submit"] {
 }
 
 footer nav ul {
+	background-color: #ffffff;
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	padding: 2em;
+
 }
 
 /* NEW */
@@ -358,4 +360,33 @@ footer nav ul {
 	font-size: 16px;
 	font-weight: bold ;
 	color: green;
+  }
+
+  header nav a {
+	text-decoration: none;
+  }
+
+  body {
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+  }
+  
+  #index_html {
+	background-color: #FFFEF8;
+	width: 100%;
+	height: min-content;
+	/*box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;*/
+  }
+
+  #loginAdmin_html {
+	background: #FFFEF8;
+	width: 100%;
+	height: min-content;
+  }
+
+  #bkg_header {
+	background-color: #FFFEF8;
   }
