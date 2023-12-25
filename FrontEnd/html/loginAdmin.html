@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Sophie Bluel - Architecte d'intérieur</title>
+	<title>Sophie Bluel - Architecte d'intérieur - Page de connexion</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,43 +15,48 @@
 </head>
 
 <body>
-    <div id="loginAdmin_html">
-	<header id="bkg_header">
+	<div id="index_html_bkg">
+	<div id='index_html_bkg_site'>
+	<header>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
 			<ul>
-				<li><a href="#projets">projets</a></li>
-				<li><a href="#contact">contact</a></li>
+                <li><a href="../index.html#portfolio">projets</a></li>
+				<li><a href="../index.html#contact">contact</a></li>
 				<li><a href="./loginAdmin.html">login</a></li>
 				<li><img src="../assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
 	</header>
-	<main>
+	<main id="mainCenter">
 		<section id="contact">
-			<h2>Contact</h2>
-			<p>Vous avez un projet ? Discutons-en !</p>
-			<form action="#" method="post">
-				<label for="name">Nom</label>
+			<h2>Log In</h2>
+			<form action="http://localhost:5678/api/users/login" method="post">
+				<label for="name">E-mail</label>
 				<input type="text" name="name" id="name">
-				<label for="email">Email</label>
+				<label for="email">Mot de passe</label>
 				<input type="email" name="email" id="email">
-				<label for="message">Message</label>
-				<textarea name="message" id="message" cols="30" rows="10"></textarea>
-				<input type="submit" value="Envoyer">
+				<input type="submit" value="Se connecter">
 			</form>
+            <div id="containerDiv_a">
+                <a id="color" href="#"><span id="underline" >Mot de passe oublié</span></a>
+            </div>
 		</section>
-	</main>
+       
 
-	<footer>
+	</main>
+		</div>
+		</div>
+
+	<footer id="footerCenter">
 		<nav>
 			<ul>
 				<li>Mentions Légales</li>
 			</ul>
 		</nav>
 	</footer>
-	<script type="module" src="../js/loginAdmin.js"></script>
-    </div>
+	<script type="module" src="./js/index.js"></script>
+	
 </body>
 
 </html>
