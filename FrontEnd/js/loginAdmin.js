@@ -1,7 +1,7 @@
 
 //import { formLogIn } from "./components/domLinker"
 //console.log(formLogIn)
-
+console.log(import.meta.url);
 // declaration de la fonction CONTROLE des champs
 function validerFormulaire(formLogIn) {
     // CTRL que le champ email n'est pas vide
