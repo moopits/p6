@@ -1,9 +1,16 @@
 
 //import { formLogIn } from "./components/domLinker"
 //console.log(formLogIn)
+
+
+
+
+
+
+// infos link http & local
 console.log(import.meta.url);
 // declaration de la fonction CONTROLE des champs
-function validerFormulaire(formLogIn) {
+function validerFormulaire(formLogIn) { /**************** */
     // CTRL que le champ email n'est pas vide
     const email = formLogIn.querySelector('#email').value;
     if (email === '') {
@@ -23,7 +30,7 @@ function validerFormulaire(formLogIn) {
       return false;
     }
     // CTRL que le champ mot de passe a au moins 8 caractères
-    if (password.length < 8) {
+    if (password.length < 6) {
       alert('Le champ mot de passe doit avoir au moins 8 caractères.');
       return false;
     }
@@ -32,7 +39,7 @@ function validerFormulaire(formLogIn) {
 }
 
 
-// gestion formulaire
+// gestion formulaire /*********** */
 //const formLogIn = document.querySelector('#mainCenter form');
 const formLogIn = document.querySelector('#mainCenter #logInForm')
 formLogIn.addEventListener('submit', (event) => {
@@ -59,6 +66,8 @@ formLogIn.addEventListener('submit', (event) => {
     const variables = { email, password };
     // Affiche valeurs des champs en console (check ONLY)
     console.log(variables);
+    // stringify
+    console.log(JSON.stringify(variables))
 });
 
 
@@ -66,13 +75,6 @@ formLogIn.addEventListener('submit', (event) => {
 /*const action = form.getAttribute('action');
 console.log(action) // URL
 
-
-
-
-
-
-
-  
   // Fonction pour envoyer les données de connexion au serveur
   function sendData() {
     // Récupère les données du formulaire
@@ -111,15 +113,6 @@ console.log(action) // URL
     });
   }
 
-
-
-
-
-
-
-
-
-
 /*fetch(action).then((response) => {//.then(data => data.json())
     if (response.status === 200) {
       // Code 200 : succès
@@ -150,3 +143,153 @@ console.log(action) // URL
     }
   
   })*/
+
+
+  // Fonction pour le login
+  /*
+function login(email, password) {
+    // URL de l'API
+    const apiUrl = "http://localhost:5678/api/users/login"; //"https://my-api.com/login";
+  
+    // Données à envoyer
+    const data = {
+      email,
+      password,
+    };
+  
+    // Envoi de la requête
+    return fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Si la requête a réussi
+        if (response.status === 200) {
+          // Enregistrement du token dans le local storage
+          const token = data.token;
+          const userId = data.userId;
+          const tokenArray = [token, userId];
+          localStorage.setItem("token", JSON.stringify(tokenArray));
+  
+          // Retour du token et de l'id
+          return tokenArray;
+        } else {
+          // Si la requête a échoué
+          // Gérer l'erreur
+          return handleError(response.status);
+        }
+      });
+  }
+  
+  // Fonction pour gérer les codes d'erreurs
+  function handleError(statusCode) {
+    // Traitement des erreurs
+    switch (statusCode) {
+      case 401:
+        // Erreur d'authentification
+        return "Erreur d'authentification";
+      case 404:
+        // Utilisateur introuvable
+        return "Utilisateur introuvable";
+      default:
+        // Erreur inconnue
+        return "Erreur inconnue";
+    }
+  }
+
+/** programme appel des 2 fonction http request */
+/*
+const tokenArray = login("sophie.bluel@test.tld", "S0phie");
+
+if (tokenArray) {
+// Le login a réussi
+console.log(tokenArray); // ['eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4', 1]
+} else {
+// Le login a échoué
+console.log(handleError(401)); // Erreur d'authentification
+}*/
+
+
+/*
+const login = async (email, password) => {
+    const apiUrl = "http://localhost:5678/api/users/login";
+    const data = {
+      email,
+      password,
+    };
+  
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  
+    if (response.status === 200) {
+      const token = response.json().token;
+      const userId = response.json().userId;
+      const tokenArray = [token, userId];
+      localStorage.setItem("token", JSON.stringify(tokenArray));
+  
+      return tokenArray;
+    } else {
+      return handleError(response.status);
+    }
+  };
+  
+  const handleError = async (statusCode) => {
+    switch (statusCode) {
+      case 401:
+        return "Erreur d'authentification";
+      case 404:
+        return "Utilisateur introuvable";
+      default:
+        return "Erreur inconnue";
+    }
+  };
+  
+  try {
+    const tokenArray = await login("sophie.bluel@test.tld", "S0phie");
+    console.log(tokenArray);
+  } catch (error) {
+    console.error(error);
+  }
+  */
+/*
+ let user1 = {
+  email: 'sophie.bluel@test.tld',
+  password: 'S0phie'
+};
+
+let response = await fetch('http://localhost:5678/api/users/login', {
+  method: 'POST',
+  body: JSON.stringify(user1),
+  headers: {
+    'Content-Type': 'application/json'
+    }
+});
+
+console.log(JSON.stringify(user1))
+let result1 = await response.json();
+alert(result1.message);*/
+
+const user1 = {
+    email: 'sophie.bluel@test.tld',
+    password: 'S0phie'
+  }
+
+fetch('http://localhost:5678/api/users/login',{
+    method: 'POST',
+    body: JSON.stringify(user1),
+    headers: {
+      'Content-Type': 'application/json'
+      }
+  
+    }).then(response => response.json())
+  
+  .then(result => alert(JSON.stringify(result)))
