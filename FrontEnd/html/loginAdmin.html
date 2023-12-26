@@ -23,7 +23,7 @@
 			<ul>
                 <li><a href="../index.html#portfolio">projets</a></li>
 				<li><a href="../index.html#contact">contact</a></li>
-				<li><a href="./loginAdmin.html">login</a></li>
+				<li><a id="weigthFont" href="./loginAdmin.html">login</a></li>
 				<li><img src="../assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -31,19 +31,17 @@
 	<main id="mainCenter">
 		<section id="contact">
 			<h2>Log In</h2>
-			<form action="http://localhost:5678/api/users/login" method="post">
+			<form id="logInForm" action="http://localhost:->5678/api/users/login" method="post">
 				<label for="name">E-mail</label>
-				<input type="text" name="name" id="name">
-				<label for="email">Mot de passe</label>
 				<input type="email" name="email" id="email">
+				<label for="email">Mot de passe</label>
+				<input type="password" name="password" id="password">
 				<input type="submit" value="Se connecter">
 			</form>
             <div id="containerDiv_a">
                 <a id="color" href="#"><span id="underline" >Mot de passe oublié</span></a>
             </div>
 		</section>
-       
-
 	</main>
 		</div>
 		</div>
@@ -55,7 +53,7 @@
 			</ul>
 		</nav>
 	</footer>
-	<script type="module" src="./js/index.js"></script>
+	<script type="module" src="../js/loginAdmin.js"></script>
 	
 </body>
 

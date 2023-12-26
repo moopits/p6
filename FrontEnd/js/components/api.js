@@ -1,11 +1,13 @@
 
-const CATEGORIES_URL = 'http://localhost:5678/api/categories'
-const WORK_URL = 'http://localhost:5678/api/works'
+const CATEGORIES_URL_get = 'http://localhost:5678/api/categories'
+const WORK_URL_get = 'http://localhost:5678/api/works'
+//const LOGIN_URL_post = 'http://localhost:5678/api/users/login'
+//const WORK_URL_post = 'http://localhost:5678/api/works'
+//const WORK_URL_deleteId = 'http://localhost:5678/api/works/1'
 
 
-
-
-export const getWorks = () => fetch(WORK_URL).then((response) => {//.then(data => data.json())
+// WORK_URL_get)
+export const getWorks = () => fetch(WORK_URL_get).then((response) => {//.then(data => data.json())
   if (response.status === 200) {
     // Code 200 : succès
     const data = response.json();
@@ -24,8 +26,8 @@ export const getWorks = () => fetch(WORK_URL).then((response) => {//.then(data =
     alert(error);
   }
   })
-
-export const getCategories = () => fetch(CATEGORIES_URL).then((response) => {//.then(data => data.json())
+// CATEGORIES_URL_get
+export const getCategories = () => fetch(CATEGORIES_URL_get).then((response) => {//.then(data => data.json())
   if (response.status === 200) {
     // Code 200 : succès
     const data = response.json();
@@ -43,9 +45,39 @@ export const getCategories = () => fetch(CATEGORIES_URL).then((response) => {//.
     // Ouvre une petite fenêtre avec le code d'erreur et sa définition
     alert(error);
   }
-  })
+})
 
+  // LOGIN_URL_post
+/*export const postLogin = () => fetch(LOGIN_URL_post).then((response) => {//.then(data => data.json())
+  if (response.status === 200) {
+    // Code 200 : succès
+    const data = response.json();
+    console.log("Réponse reçue avec succès WORK_URL");
+    console.log(data);
+    return data
+  } 
+  else if (data.status === 401) {
+    // Code 500 : erreur interne du serveur
+    // cré une instance Error
+    const error = new Error("Erreur interne du serveur pour LOGIN_URL_pos");
+    error.status = response.status;
+    error.message = response.statusText;
 
+    // Ouvre une petite fenêtre avec le code d'erreur et sa définition
+    alert(error);
+  }
+  else if (data.status === 404) {
+    // Code 500 : erreur interne du serveur
+    // cré une instance Error
+    const error = new Error("Erreur interne du serveur pour LOGIN_URL_pos");
+    error.status = response.status;
+    error.message = response.statusText;
+
+    // Ouvre une petite fenêtre avec le code d'erreur et sa définition
+    alert(error);
+  }
+
+})*/
 
 
 /*  CODE DE TEST */

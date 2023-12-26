@@ -2,9 +2,6 @@ import { gallery, filterContainer } from "./components/domLinker.js";
 import { getWorks } from "./components/api.js";
 import { getCategories } from "./components/api.js";
 
-// import createButtonJobs from './components/filters.js';
-
-
 /**
  * Create Gallery in function of data received from API
  * @param {Array} data - Array of object data get works
@@ -89,20 +86,10 @@ getWorks().then(data => createGallery(data))
 getCategories().then(data => createCategories(data))
 
 
-
-
-
-
-
-/* build buttons filter */
-// createButtonJobs()
-
 // SET tuto test
 //const nombres = [2, 3, 4, 4, 2, 2, 2, 4, 4, 5, 5, 6, 6, 7, 5, 32, 3, 4, 5];
 //console.log([...new Set(nombres)]);
-
-
-
+// concatenation tuto test
 // const k = [1,2,3]
 // console.log('cat: ' + k[0])
 
@@ -112,26 +99,11 @@ getCategories().then(data => createCategories(data))
 // console.log(containerButtons_filter[0])
 // console.log(containerButtons_filter.length)
 
-// let categoryId = null
 
-// fetch('http://localhost:5678/api/works')
-//     .then((response) => response.json())
-//     .then((data) => {
-
-//         for (let index = 0; index < containerButtons_filter.length; index++) {
-
-//             containerButtons_filter[index].addEventListener('click', (event) => { /*conserver event*/
-
-//                 if (index === 0) {
-//                     categoryId = data
-//                 } else {
-//                     categoryId = data.filter((item) => item.categoryId === index)
-//                 }
-//                 console.log('button:  ' + index + '  -  categoryId:  ' + index)
-//                 console.log(categoryId)
-//             })
-//         }
-//     })
-
+var data1 = {
+    username: "johndoe",
+    password: "password123"
+  };
+console.log(JSON.stringify(data1))
 
 
