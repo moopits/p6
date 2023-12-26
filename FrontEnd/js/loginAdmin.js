@@ -34,7 +34,7 @@ function validerFormulaire(formLogIn) {
 
 // gestion formulaire
 //const formLogIn = document.querySelector('#mainCenter form');
-const formLogIn = document.querySelector('#mainCenter form')
+const formLogIn = document.querySelector('#mainCenter #logInForm')
 formLogIn.addEventListener('submit', (event) => {
     // Vérifiez les champs du formulaire
     const valid = validerFormulaire(formLogIn);
@@ -49,8 +49,9 @@ formLogIn.addEventListener('submit', (event) => {
         // Reset les champs a vides
         formLogIn.reset();
     }
-    // Si les champs sont valides, soumettez le formulaire
-    event.preventDefault();
+    // Si les champs sont valides, soumettre le formulaire
+    // Annule événement pour qu'il n'execute pas de post ou autre
+    event.preventDefault(); // stop la propagation submit
     // Obtention valeurs des champs sur id
     const email = formLogIn.querySelector('#email').value;
     const password = formLogIn.querySelector('#password').value;
@@ -58,7 +59,6 @@ formLogIn.addEventListener('submit', (event) => {
     const variables = { email, password };
     // Affiche valeurs des champs en console (check ONLY)
     console.log(variables);
-    // Annule événement pour qu'il n'execute pas de post ou autre
 });
 
 
