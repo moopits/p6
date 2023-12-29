@@ -1,8 +1,7 @@
-
+import { email, password, formLogIn } from "./components/domLinker.js";
+import { postLogin } from "./components/api.js";
 //import { formLogIn } from "./components/domLinker"
 //console.log(formLogIn)
-
-
 
 
 
@@ -10,64 +9,71 @@
 // infos link http & local
 console.log(import.meta.url);
 // declaration de la fonction CONTROLE des champs
-function validerFormulaire(formLogIn) { /**************** */
-    // CTRL que le champ email n'est pas vide
-    const email = formLogIn.querySelector('#email').value;
-    if (email === '') {
-      alert('Le champ email ne doit pas être vide.');
-      return false;
-    }
-    // CTRL que le champ email est un e-mail valide
-    const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!regexEmail.test(email)) {
-      alert('Le champ email doit être un e-mail valide.');
-      return false;
-    }
-    // CTRL que le champ mot de passe n'est pas vide
-    const password = formLogIn.querySelector('#password').value;
-    if (password === '') {
-      alert('Le champ mot de passe ne doit pas être vide.');
-      return false;
-    }
-    // CTRL que le champ mot de passe a au moins 8 caractères
-    if (password.length < 6) {
-      alert('Le champ mot de passe doit avoir au moins 8 caractères.');
-      return false;
-    }
-    // Les champs sont valides, renvoi true
-    return true;
+function validerFormulaire() { /**************** */
+  // CTRL que le champ email n'est pas vide
+  // const email = formLogIn.querySelector('#email').value;
+  if (email.value === '') {
+    alert('Le champ email ne doit pas être vide.');
+    return false;
+  }
+  // CTRL que le champ email est un e-mail valide
+  const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!regexEmail.test(email.value)) {
+    alert('Le champ email doit être un e-mail valide.');
+    return false;
+  }
+  // CTRL que le champ mot de passe n'est pas vide
+  // const password = formLogIn.querySelector('#password').value;
+  if (password.value === '') {
+    alert('Le champ mot de passe ne doit pas être vide.');
+    return false;
+  }
+  // CTRL que le champ mot de passe a au moins 8 caractères
+  if (password.length < 6) {
+    alert('Le champ mot de passe doit avoir au moins 8 caractères.');
+    return false;
+  }
+  // Les champs sont valides, renvoi true
+  return true;
 }
 
 
 // gestion formulaire /*********** */
 //const formLogIn = document.querySelector('#mainCenter form');
-const formLogIn = document.querySelector('#mainCenter #logInForm')
+// const formLogIn = document.querySelector('#mainCenter #logInForm')
 formLogIn.addEventListener('submit', (event) => {
-    // Vérifiez les champs du formulaire
-    const valid = validerFormulaire(formLogIn);
+  event.preventDefault();
+  // Vérifiez les champs du formulaire
+  const valid = validerFormulaire(formLogIn);
 
-    // Si les champs ne sont pas valides, empêchez immédiatement la propagation de l'événement
-    if (!valid) {
-        // Empêcher immédiatement la propagation de l'événement
-        event.stopImmediatePropagation();
-        event.preventDefault();     
-        // Les champs ne sont pas valides, affichez une alerte
-        alert('Les champs ne sont pas valides.');
-        // Reset les champs a vides
-        formLogIn.reset();
-    }
-    // Si les champs sont valides, soumettre le formulaire
-    // Annule événement pour qu'il n'execute pas de post ou autre
-    event.preventDefault(); // stop la propagation submit
-    // Obtention valeurs des champs sur id
-    const email = formLogIn.querySelector('#email').value;
-    const password = formLogIn.querySelector('#password').value;
-    // Stock les valeurs des champs
-    const variables = { email, password };
-    // Affiche valeurs des champs en console (check ONLY)
-    console.log(variables);
-    // stringify
-    console.log(JSON.stringify(variables))
+  // Si les champs ne sont pas valides, empêchez immédiatement la propagation de l'événement
+  if (!valid) {
+    // Empêcher immédiatement la propagation de l'événement
+    event.stopImmediatePropagation();
+    // Les champs ne sont pas valides, affichez une alerte
+    alert('Les champs ne sont pas valides.');
+    // Reset les champs a vides
+    formLogIn.reset();
+  } else {
+    postLogin({ email: email.value, password: password.value })
+      .then(data => {
+        localStorage.token = data.token
+        window.location.href = '../index.html'
+      })
+      .catch(error => alert(error))
+  }
+  // Si les champs sont valides, soumettre le formulaire
+  // Annule événement pour qu'il n'execute pas de post ou autre
+  // Obtention valeurs des champs sur id
+  // const email = formLogIn.querySelector('#email').value;
+  // const password = formLogIn.querySelector('#password').value;
+  // Stock les valeurs des champs
+  // const variables = { email, password };
+  // // Affiche valeurs des champs en console (check ONLY)
+  // console.log(variables);
+  // // stringify
+  // console.log(JSON.stringify(variables))
+
 });
 
 
@@ -80,7 +86,7 @@ console.log(action) // URL
     // Récupère les données du formulaire
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
-  
+
     // Envoie une requête HTTP POST au serveur
     fetch(action, {
       method: "POST",
@@ -95,10 +101,10 @@ console.log(action) // URL
       if (data.success) {
         // Récupère le token renvoyé par le serveur
         var token = data.token;
-  
+
         // Enregistre le token dans le local storage
         localStorage.setItem("token", token);
-  
+
         // Affiche un message de succès
         alert("Connexion réussie !");
       }
@@ -120,14 +126,14 @@ console.log(action) // URL
       console.log("Réponse reçue avec succès WORK_URL");
       console.log(data);
       return data
-    } 
+    }
     else if (data.status === 401) {
       // Code 500 : erreur interne du serveur
       // cré une instance Error
       const error = new Error("Erreur interne du serveur pour LOGIN_URL_pos");
       error.status = response.status;
       error.message = response.statusText;
-  
+
       // Ouvre une petite fenêtre avec le code d'erreur et sa définition
       alert(error);
     }
@@ -137,69 +143,69 @@ console.log(action) // URL
       const error = new Error("Erreur interne du serveur pour LOGIN_URL_pos");
       error.status = response.status;
       error.message = response.statusText;
-  
+
       // Ouvre une petite fenêtre avec le code d'erreur et sa définition
       alert(error);
     }
-  
+
   })*/
 
 
-  // Fonction pour le login
-  /*
+// Fonction pour le login
+/*
 function login(email, password) {
-    // URL de l'API
-    const apiUrl = "http://localhost:5678/api/users/login"; //"https://my-api.com/login";
-  
-    // Données à envoyer
-    const data = {
-      email,
-      password,
-    };
-  
-    // Envoi de la requête
-    return fetch(apiUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Si la requête a réussi
-        if (response.status === 200) {
-          // Enregistrement du token dans le local storage
-          const token = data.token;
-          const userId = data.userId;
-          const tokenArray = [token, userId];
-          localStorage.setItem("token", JSON.stringify(tokenArray));
-  
-          // Retour du token et de l'id
-          return tokenArray;
-        } else {
-          // Si la requête a échoué
-          // Gérer l'erreur
-          return handleError(response.status);
-        }
-      });
+  // URL de l'API
+  const apiUrl = "http://localhost:5678/api/users/login"; //"https://my-api.com/login";
+ 
+  // Données à envoyer
+  const data = {
+    email,
+    password,
+  };
+ 
+  // Envoi de la requête
+  return fetch(apiUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Si la requête a réussi
+      if (response.status === 200) {
+        // Enregistrement du token dans le local storage
+        const token = data.token;
+        const userId = data.userId;
+        const tokenArray = [token, userId];
+        localStorage.setItem("token", JSON.stringify(tokenArray));
+ 
+        // Retour du token et de l'id
+        return tokenArray;
+      } else {
+        // Si la requête a échoué
+        // Gérer l'erreur
+        return handleError(response.status);
+      }
+    });
+}
+ 
+// Fonction pour gérer les codes d'erreurs
+function handleError(statusCode) {
+  // Traitement des erreurs
+  switch (statusCode) {
+    case 401:
+      // Erreur d'authentification
+      return "Erreur d'authentification";
+    case 404:
+      // Utilisateur introuvable
+      return "Utilisateur introuvable";
+    default:
+      // Erreur inconnue
+      return "Erreur inconnue";
   }
-  
-  // Fonction pour gérer les codes d'erreurs
-  function handleError(statusCode) {
-    // Traitement des erreurs
-    switch (statusCode) {
-      case 401:
-        // Erreur d'authentification
-        return "Erreur d'authentification";
-      case 404:
-        // Utilisateur introuvable
-        return "Utilisateur introuvable";
-      default:
-        // Erreur inconnue
-        return "Erreur inconnue";
-    }
-  }
+}
 
 /** programme appel des 2 fonction http request */
 /*
@@ -278,18 +284,3 @@ console.log(JSON.stringify(user1))
 let result1 = await response.json();
 alert(result1.message);*/
 
-const user1 = {
-    email: 'sophie.bluel@test.tld',
-    password: 'S0phie'
-  }
-
-fetch('http://localhost:5678/api/users/login',{
-    method: 'POST',
-    body: JSON.stringify(user1),
-    headers: {
-      'Content-Type': 'application/json'
-      }
-  
-    }).then(response => response.json())
-  
-  .then(result => alert(JSON.stringify(result)))

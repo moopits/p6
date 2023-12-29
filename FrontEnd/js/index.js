@@ -1,6 +1,12 @@
-import { gallery, filterContainer } from "./components/domLinker.js";
+import { gallery, filterContainer, loginA } from "./components/domLinker.js";
 import { getWorks } from "./components/api.js";
 import { getCategories } from "./components/api.js";
+
+if (localStorage.token) {
+    loginA.innerHTML = 'logout'
+    localStorage.removeItem("token");
+}
+
 
 /**
  * Create Gallery in function of data received from API
@@ -30,7 +36,7 @@ const createCategories = data => {
     buttonTous.classList.add("filter-active")
     buttonTous.innerText = "Tous";
     //buttonTous.addEventListener('click', () => getWorks().then(data => createGallery(data)))
-    
+
     // add event on button
     buttonTous.addEventListener('click', () => {
         //remove class="filter-active" toall bkg color button
@@ -67,7 +73,7 @@ const createCategories = data => {
             buttonBkgRemove.forEach(element => element.classList.remove("filter-active"));
             // add bkg to button
             buttonBkgRemove[1 + i].classList.add("filter-active")
-                
+
             return getWorks().then(works_dataLength => {
                 console.log(works_dataLength)
                 const filteredData = works_dataLength.filter(item => item.categoryId === data[i].id)
@@ -103,7 +109,7 @@ getCategories().then(data => createCategories(data))
 var data1 = {
     username: "johndoe",
     password: "password123"
-  };
+};
 console.log(JSON.stringify(data1))
 
 

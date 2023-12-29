@@ -444,3 +444,8 @@ input[type="submit"] {
 #weigthFont {
 	font-weight: 600;
 }
+
+#iconSize {
+	width: 22px;
+	height: 22px;
+}

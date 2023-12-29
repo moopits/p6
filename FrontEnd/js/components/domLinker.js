@@ -6,12 +6,11 @@ export const filterContainer = document.querySelector(".containerButtons")
 console.log(filterContainer)
 /*export const containerButtons = document.querySelector('.containerButtons')
 */
+export const loginA = document.getElementById('loginA')
 
-export const abc = document.querySelector('#mainCenter #logInForm')
-console.log(abc)
-
-
-
-
+/*** LOGIN ***/
+export const email = document.querySelector('#email')
+export const password = document.querySelector('#password')
+export const formLogIn = document.querySelector('#mainCenter #logInForm')
 
 

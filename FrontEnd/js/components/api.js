@@ -47,6 +47,20 @@ export const getCategories = () => fetch(CATEGORIES_URL_get).then((response) => 
   }
 })
 
+export const postLogin = data => fetch('http://localhost:5678/api/users/login', {
+  method: 'POST',
+  body: JSON.stringify(data),
+  headers: {
+    'Content-Type': 'application/json'
+  }
+}).then(response => response.json())
+  .then(data => {
+    if (!data.token) {
+      throw 'Erreur dans l’identifiant ou le mot de passe'
+    }
+    return data
+  })
+
   // LOGIN_URL_post
 /*export const postLogin = () => fetch(LOGIN_URL_post).then((response) => {//.then(data => data.json())
   if (response.status === 200) {
