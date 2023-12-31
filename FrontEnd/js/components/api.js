@@ -15,7 +15,7 @@ export const getWorks = () => fetch(WORK_URL_get).then((response) => {//.then(da
     console.log(data);
     return data
   } 
-  else if (data.status === 500) {
+  else if (response.status === 500) {
     // Code 500 : erreur interne du serveur
     // cré une instance Error
     const error = new Error("Erreur interne du serveur pour WORK_URL");
@@ -35,7 +35,7 @@ export const getCategories = () => fetch(CATEGORIES_URL_get).then((response) => 
     console.log(data);
     return data
   } 
-  else if (data.status === 500) {
+  else if (response.status === 500) {
     // Code 500 : erreur interne du serveur
     // cré une instance Error
     const error = new Error("Erreur interne du serveur pour CATEGORIES_URL");

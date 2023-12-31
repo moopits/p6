@@ -2,9 +2,12 @@ import { gallery, filterContainer, loginA } from "./components/domLinker.js";
 import { getWorks } from "./components/api.js";
 import { getCategories } from "./components/api.js";
 
+
+// condition IF sur login page OK
 if (localStorage.token) {
     loginA.innerHTML = 'logout'
-    localStorage.removeItem("token");
+    //localStorage.removeItem("token")
+    console.log('token ' + String(localStorage.getItem('token')))
 }
 
 
@@ -34,6 +37,7 @@ const createCategories = data => {
     buttonTous.classList.add("styleFont")
     buttonTous.classList.add("styleShape")
     buttonTous.classList.add("filter-active")
+    //buttonOthers.classList.add("displayButtonLogOut")
     buttonTous.innerText = "Tous";
     //buttonTous.addEventListener('click', () => getWorks().then(data => createGallery(data)))
 
@@ -62,6 +66,8 @@ const createCategories = data => {
         buttonOthers.classList.add("button" + i)
         buttonOthers.classList.add("styleFont")
         buttonOthers.classList.add("styleShape")
+        //buttonOthers.classList.add("displayButtonLogOut")
+
 
         buttonOthers.innerText = data[i].name;
 
@@ -84,6 +90,8 @@ const createCategories = data => {
         // add <button> 'name from categories db' in <div class="containerButtons">
         filterContainer.appendChild(buttonOthers)
     }
+    console.log(document.querySelectorAll('.containerButtons button'))
+    console.log(document.querySelector('.containerButtons').children.length + ' enfant')
 }
 
 /* build gallery */
@@ -113,3 +121,17 @@ var data1 = {
 console.log(JSON.stringify(data1))
 
 
+// Vérifiez si la `div` `containerButtons` existe dans le DOM
+if (!document.querySelector('.containerButtons')) {
+    // La `div` `containerButtons` n'existe pas
+    console.log('La div containerButtons existe pas')
+  } else {
+    console.log('La div containerButtons existe')
+
+  }
+  
+
+
+  
+  
+  
