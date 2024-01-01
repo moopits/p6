@@ -6,6 +6,20 @@ import { getCategories } from "./components/api.js";
 // condition IF sur login page OK
 if (localStorage.token) {
     loginA.innerHTML = 'logout'
+    console.log("token EXISTE")
+    const whoClick = document.querySelector('#clic')
+    console.log(whoClick)
+    whoClick.addEventListener("click", () => {
+    console.log('clickOn')
+
+   })
+  
+   const showON = document.querySelector('.setBlackAdmin')
+    showON.classList.remove("showOn")
+    const showON2 = document.querySelector('.containerProjets span')
+    showON2.classList.remove("showOn")
+    console.log(showON)
+
     //localStorage.removeItem("token")
     console.log('token ' + String(localStorage.getItem('token')))
 }
@@ -90,6 +104,12 @@ const createCategories = data => {
         // add <button> 'name from categories db' in <div class="containerButtons">
         filterContainer.appendChild(buttonOthers)
     }
+ /*   if (localStorage.token) {
+        console.log("token EXISTE")
+        const showON = document.querySelector('.containerButtons')
+        showON.classList.remove("showOn")
+        console.log(showON)
+    }*/
     console.log(document.querySelectorAll('.containerButtons button'))
     console.log(document.querySelector('.containerButtons').children.length + ' enfant')
 }
@@ -129,6 +149,7 @@ if (!document.querySelector('.containerButtons')) {
     console.log('La div containerButtons existe')
 
   }
+ 
   
 
 

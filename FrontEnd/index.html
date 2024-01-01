@@ -18,8 +18,13 @@
 
 <body>
 	<div id="index_html_bkg">
+			<div class="setBlackAdmin showOn">
+				<span id="fontSizemodif"><i class="fa-regular fa-pen-to-square"></i>Mode édition</span>
+			</div>		
 		<div id='index_html_bkg_site'>
-			<header>
+	
+			<header class="setHeader">
+				<div class="setTitleNav">
 				<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 				<nav>
 					<ul>
@@ -29,6 +34,7 @@
 						<li><img id="iconSize" src="./assets/icons/instagram.png" alt="Instagram"></li>
 					</ul>
 				</nav>
+				</div>
 			</header>
 			<main id="mainCenter">
 				<section id="introduction">
@@ -51,7 +57,10 @@
 				<section id="portfolio">
 					<div class="containerProjets">
 						<h2>Mes Projets</h2>
-						<span id="fontSizemodif" ><i class="fa-regular fa-pen-to-square"></i>modifier</span>
+						<span class="showOn">
+							<i class="fa-regular fa-pen-to-square"></i>
+							<button id="clic" class="decoButton">modifier</button>
+						</span>
 					</div>
 
 					<div class="containerButtons">
