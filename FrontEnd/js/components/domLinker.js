@@ -13,4 +13,7 @@ export const email = document.querySelector('#email')
 export const password = document.querySelector('#password')
 export const formLogIn = document.querySelector('#mainCenter #logInForm')
 
-
+/*** MODAL ***/
+export const modal = document.getElementById('modal')
+export const modalBtnClose = document.getElementById('modal-btn-close')
+export const galleryModal = document.querySelector('.modal .gallery')

@@ -1,6 +1,7 @@
-import { gallery, filterContainer, loginA } from "./components/domLinker.js";
+import { gallery, filterContainer, loginA, galleryModal } from "./components/domLinker.js";
 import { getWorks } from "./components/api.js";
 import { getCategories } from "./components/api.js";
+import { displayModal } from "./components/modal.js";
 
 
 // condition IF sur login page OK
@@ -18,38 +19,39 @@ if (localStorage.token) {
     const showON2 = document.querySelector('.containerProjets span')
     showON2.classList.remove("showOn")
     console.log(showON)
-    
+
 
     // gestion bouton modifier (modal)
     const b_modifier = document.querySelector('#clic_b_modifier')
     console.log(b_modifier)
     b_modifier.addEventListener("click", () => {
-    console.log('clickOn')
+        console.log('clickOn')
+        displayModal()
     })
 
     // getion logOut ( retour page acceuil - index.html)
     const l_logOut = document.querySelector('.clic_l_logOut')
     console.log(l_logOut)
     l_logOut.addEventListener("click", () => {
-    console.log('clickOn')
-    // changer nom lien
-    loginA.innerHTML = 'logIn'
-   
-    //localStorage.removeItem("token")
-    localStorage.removeItem("token")
+        console.log('clickOn')
+        // changer nom lien
+        loginA.innerHTML = 'logIn'
 
-    
-    console.log('token ' + String(localStorage.getItem('token')))
-})
+        //localStorage.removeItem("token")
+        localStorage.removeItem("token")
+
+
+        console.log('token ' + String(localStorage.getItem('token')))
+    })
 }
-
 
 /**
  * Create Gallery in function of data received from API
  * @param {Array} data - Array of object data get works
+ * @param {HTMLElement} container - container gallery from home page or modal
  */
-const createGallery = data => {
-    gallery.innerHTML = ''
+const createGallery = (data, container = gallery) => {
+    container.innerHTML = ''
 
     data.forEach(item => {
         const figure = document.createElement('figure')
@@ -60,7 +62,7 @@ const createGallery = data => {
         const figCaption = document.createElement('figcaption')
         figCaption.innerHTML = item.title
         figure.appendChild(figCaption)
-        gallery.appendChild(figure)
+        container.appendChild(figure)
     });
 }
 
@@ -123,18 +125,21 @@ const createCategories = data => {
         // add <button> 'name from categories db' in <div class="containerButtons">
         filterContainer.appendChild(buttonOthers)
     }
- /*   if (localStorage.token) {
-        console.log("token EXISTE")
-        const showON = document.querySelector('.containerButtons')
-        showON.classList.remove("showOn")
-        console.log(showON)
-    }*/
+    /*   if (localStorage.token) {
+           console.log("token EXISTE")
+           const showON = document.querySelector('.containerButtons')
+           showON.classList.remove("showOn")
+           console.log(showON)
+       }*/
     console.log(document.querySelectorAll('.containerButtons button'))
     console.log(document.querySelector('.containerButtons').children.length + ' enfant')
 }
 
 /* build gallery */
-getWorks().then(data => createGallery(data))
+getWorks().then(data => {
+    createGallery(data)
+    createGallery(data, galleryModal)
+})
 /* build categories */
 if (!localStorage.token) { // hide en logOut
     getCategories().then(data => createCategories(data))
@@ -170,10 +175,10 @@ if (!document.querySelector('.containerButtons')) {
     console.log('La div containerButtons existe')
 
   }*/
- 
-  
 
 
-  
-  
-  
+
+
+
+
+
