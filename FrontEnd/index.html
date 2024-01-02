@@ -40,6 +40,7 @@
 				</div>
 			</header>
 			<main id="mainCenter">
+				<!--SECTION introduction/presentation-->
 				<section id="introduction">
 					<figure>
 						<img src="./assets/images/sophie-bluel.png" alt="">
@@ -57,6 +58,7 @@
 							décorateur(trice)</p>
 					</article>
 				</section>
+				<!--SECTION affichage button & gallery-->
 				<section id="portfolio">
 					<div class="containerProjets">
 						<h2>Mes Projets</h2>
@@ -65,13 +67,14 @@
 							<button id="clic_b_modifier" class="decoButton fontSize14">modifier</button>
 						</span>
 					</div>
-
+					<!--affichage button-->
 					<div class="containerButtons">
 					</div>
-					<div class="gallery">
-
+					<!--affichage gallery-->
+					<div class="gallery showFigCaption">
 					</div>
 				</section>
+				<!--SECTION FORMULAIRE CONTACT-->	
 				<section id="contact">
 					<h2>Contact</h2>
 					<p>Vous avez un projet ? Discutons-en !</p>
@@ -85,11 +88,16 @@
 						<input type="submit" value="Envoyer">
 					</form>
 				</section>
+				<!--FENETRE MODAL-->
 				<dialog id="modal" class="modal">
 					<div class="modal-main">
 						<btn id="modal-btn-close">X</btn>
 						<h2>Galerie photo</h2>
-						<section class="gallery"></section>
+						<section class="gallery">
+							<!--<i class="fa-solid fa-trash-can setPosition"></i>
+							-->
+						</section>
+						<button class="styleFontShape">Ajouter une photo</button>
 					</div>
 				</dialog>
 			</main>

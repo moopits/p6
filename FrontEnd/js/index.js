@@ -36,12 +36,8 @@ if (localStorage.token) {
         console.log('clickOn')
         // changer nom lien
         loginA.innerHTML = 'logIn'
-
         //localStorage.removeItem("token")
         localStorage.removeItem("token")
-
-
-        console.log('token ' + String(localStorage.getItem('token')))
     })
 }
 
@@ -50,18 +46,40 @@ if (localStorage.token) {
  * @param {Array} data - Array of object data get works
  * @param {HTMLElement} container - container gallery from home page or modal
  */
-const createGallery = (data, container = gallery) => {
+const createGallery = (data, ag, container = gallery) => {
     container.innerHTML = ''
+    console.log(ag)
 
     data.forEach(item => {
         const figure = document.createElement('figure')
+        figure.className = 'setRelative'
         const img = document.createElement('img')
         img.src = item.imageUrl
         img.alt = item.title
         figure.appendChild(img)
-        const figCaption = document.createElement('figcaption')
-        figCaption.innerHTML = item.title
-        figure.appendChild(figCaption)
+        //const figCaption = document.createElement('figcaption')
+        // AFFICH texte ONLY INDEX.html
+        if(ag) {
+            console.log('modal')
+            const div = document.createElement('div')
+            div.className = 'div-absolute'
+
+            /*const span = document.createElement('span')
+            span.classList = 'center'
+            div.appendChild(span) */
+
+            const icon = document.createElement('i')
+            icon.classList = 'fa-solid fa-trash-can'
+            /*span.appendChild(icon)    */   
+            div.appendChild(icon) 
+            figure.appendChild(div)
+        } else {
+            console.log('non modal')
+            const figCaption = document.createElement('figcaption')
+            figCaption.innerHTML = item.title  
+            figure.appendChild(figCaption)
+        }
+    
         container.appendChild(figure)
     });
 }
@@ -137,8 +155,8 @@ const createCategories = data => {
 
 /* build gallery */
 getWorks().then(data => {
-    createGallery(data)
-    createGallery(data, galleryModal)
+    createGallery(data, 0)
+    createGallery(data, 1, galleryModal)
 })
 /* build categories */
 if (!localStorage.token) { // hide en logOut

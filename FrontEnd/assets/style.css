@@ -581,3 +581,56 @@ input[type="submit"] {
 	width: auto;
 	border-bottom: 1px solid rgba(179, 179, 179, 1);
 }
+/* position icon TRASH-CAN fentre modal */
+.div-absolute {
+	position: absolute;
+	z-index: 20;
+	top: 5px;
+	right: 5px;
+	width: 17px;
+	height: 17px;
+	border-radius: 2px;
+	border: 0px;
+	background-color: #000000;
+	display: flex;
+	justify-content:center;
+	align-items: center;
+}
+.setRelative {
+	position: relative;
+}
+.fa-solid {
+	color: #ffffff;
+	font-size: 14px;
+}
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* style button modal */
+.styleFontShape {
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 1.2em;
+	color: #1D6154;
+	background-color: #ffffff;
+	border: 1px solid #1D6154;
+	width: auto;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 0.4em;
+	padding-top: 0.4em;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	border-radius: 60px;
+}
+.styleFontShape:hover {
+	background-color: #1D6154;
+	color: white;
+	cursor: pointer;
+}
+
