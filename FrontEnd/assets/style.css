@@ -451,14 +451,18 @@ input[type="submit"] {
 	height: 22px;
 }
 
-#fontSizeModif {
+.fontSize16 {
+	font-family: Work Sans;
+	font-size: 16px;
+	font-weight: 400;
+	color: #ffffff;
+}
+.fontSize14 {
 	font-family: Work Sans;
 	font-size: 14px;
 	font-weight: 400;
-	margin-bottom: 1em;
-	color: #B1663C;
+	color: #000000;
 }
-
 .containerProjets {
 	width: 100%;
 	height: 100%;
@@ -484,7 +488,6 @@ input[type="submit"] {
 	justify-content: center;
 	align-items: center;
 	background-color: black;
-	color: #ffffff;
 }
 .setHeader {
 	display: flex;

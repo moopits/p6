@@ -7,21 +7,40 @@ import { getCategories } from "./components/api.js";
 if (localStorage.token) {
     loginA.innerHTML = 'logout'
     console.log("token EXISTE")
-    const whoClick = document.querySelector('#clic')
-    console.log(whoClick)
-    whoClick.addEventListener("click", () => {
-    console.log('clickOn')
+    // changer href immediatement
+    const getA = document.querySelector('#loginA')
+    console.log(getA)
+    getA.setAttribute('href', './index.html')
 
-   })
-  
-   const showON = document.querySelector('.setBlackAdmin')
+    // Show (mode edition) & (modifier)
+    const showON = document.querySelector('.setBlackAdmin')
     showON.classList.remove("showOn")
     const showON2 = document.querySelector('.containerProjets span')
     showON2.classList.remove("showOn")
     console.log(showON)
+    
 
+    // gestion bouton modifier (modal)
+    const b_modifier = document.querySelector('#clic_b_modifier')
+    console.log(b_modifier)
+    b_modifier.addEventListener("click", () => {
+    console.log('clickOn')
+    })
+
+    // getion logOut ( retour page acceuil - index.html)
+    const l_logOut = document.querySelector('.clic_l_logOut')
+    console.log(l_logOut)
+    l_logOut.addEventListener("click", () => {
+    console.log('clickOn')
+    // changer nom lien
+    loginA.innerHTML = 'logIn'
+   
     //localStorage.removeItem("token")
+    localStorage.removeItem("token")
+
+    
     console.log('token ' + String(localStorage.getItem('token')))
+})
 }
 
 
@@ -117,7 +136,9 @@ const createCategories = data => {
 /* build gallery */
 getWorks().then(data => createGallery(data))
 /* build categories */
-getCategories().then(data => createCategories(data))
+if (!localStorage.token) { // hide en logOut
+    getCategories().then(data => createCategories(data))
+}
 
 
 // SET tuto test
@@ -133,7 +154,7 @@ getCategories().then(data => createCategories(data))
 // console.log(containerButtons_filter[0])
 // console.log(containerButtons_filter.length)
 
-
+/*
 var data1 = {
     username: "johndoe",
     password: "password123"
@@ -148,7 +169,7 @@ if (!document.querySelector('.containerButtons')) {
   } else {
     console.log('La div containerButtons existe')
 
-  }
+  }*/
  
   
 
