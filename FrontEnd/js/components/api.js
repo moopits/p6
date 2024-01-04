@@ -3,7 +3,7 @@ const CATEGORIES_URL_get = 'http://localhost:5678/api/categories'
 const WORK_URL_get = 'http://localhost:5678/api/works'
 //const LOGIN_URL_post = 'http://localhost:5678/api/users/login'
 //const WORK_URL_post = 'http://localhost:5678/api/works'
-//const WORK_URL_deleteId = 'http://localhost:5678/api/works/1'
+const WORK_URL_deleteId = 'http://localhost:5678/api/works/2'
 
 
 // WORK_URL_get)
@@ -60,6 +60,33 @@ export const postLogin = data => fetch('http://localhost:5678/api/users/login', 
     }
     return data
   })
+
+// delete WORKS by Id (on modal ONLY withn modifier button)
+export const deleteById = (getModalId, token) => fetch(WORK_URL_deleteId, { //, {
+  method: "DELETE",
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+})
+.then((response) => {
+  console.log(getModalId)
+  if (response.status === 200) {
+    console.log("La ressource a été supprimée avec succès.");
+  } else {
+    console.log("La suppression de la ressource a échoué.");
+  }
+  //console.log('Code ${reponse.status} ${response.statusText}')
+})
+  /*else {
+    // Code 500 : erreur interne du serveur
+    // cré une instance Error
+    const error = new Error("Erreur interne du serveur pour CATEGORIES_URL");
+    error.status = response.status;
+    error.message = response.statusText;
+    // Ouvre une petite fenêtre avec le code d'erreur et sa définition
+    alert(error);
+  }*/
+
 
   // LOGIN_URL_post
 /*export const postLogin = () => fetch(LOGIN_URL_post).then((response) => {//.then(data => data.json())

@@ -2,12 +2,14 @@ import { gallery, filterContainer, loginA, galleryModal } from "./components/dom
 import { getWorks } from "./components/api.js";
 import { getCategories } from "./components/api.js";
 import { displayModal } from "./components/modal.js";
+import { deleteById } from "./components/api.js"
 
 
 // condition IF sur login page OK
 if (localStorage.token) {
     loginA.innerHTML = 'logout'
     console.log("token EXISTE")
+    console.log(localStorage.getItem('token'))
     // changer href immediatement
     const getA = document.querySelector('#loginA')
     console.log(getA)
@@ -58,10 +60,30 @@ const createGallery = (data, ag, container = gallery) => {
         img.alt = item.title
         figure.appendChild(img)
         //const figCaption = document.createElement('figcaption')
-        // AFFICH texte ONLY INDEX.html
+        // CONTROL AFFICH texte ONLY INDEX.html
+        // &&
         if(ag) {
             console.log('modal')
             const div = document.createElement('div')
+            // click ON for delete -GET id categorie
+            div.addEventListener('click', () => {
+                console.log('click ON  ' + 'item.id= ' + item.id + ' item.catId= ' + item.categoryId)
+                
+                // modal CONFIRM supp pic Modal WORKS
+                //if (localStorage.("token")) {
+                    const token = localStorage.getItem("token");
+                  //}
+                confirm(item.id, token)
+                /********if (result) {
+                  // Supprimer l'élément
+                  console.log('supprimé !!')
+                  //deleteById(item.id)
+                } else {
+                  // Ne pas supprimer l'élément
+                  console.log('NON supprimé !!')
+                }    ************////            
+
+            })
             div.className = 'div-absolute'
 
             /*const span = document.createElement('span')
@@ -162,6 +184,47 @@ getWorks().then(data => {
 if (!localStorage.token) { // hide en logOut
     getCategories().then(data => createCategories(data))
 }
+
+
+function confirm(item, token) {
+    console.log(item)
+    console.log(token)
+    // Supprimer l'élément
+    //console.log(document.getElementById("abcdef"))
+    document.getElementById("abcdef").show()
+    const oui = document.querySelector('.oui')
+    oui.addEventListener('click', () => {
+        document.getElementById("abcdef").close()
+        //console.log(oui)
+        //console.log('oui')
+        console.log('supprimé !!')
+        deleteById(item, token)
+    })
+
+    // Ne pas supprimer l'élément
+    const non = document.querySelector('.non')
+    non.addEventListener('click', () => {
+        document.getElementById("abcdef").close()
+        //console.log(non)
+        //console.log('non')
+        console.log('NON supprimé !!')
+    })
+
+
+    
+  /*
+    const yesButton = modal.querySelector(".btn-primary");
+    yesButton.addEventListener("click", () => {
+      modal.remove();
+      return true;
+    });
+  
+    const noButton = modal.querySelector(".btn-secondary");
+    noButton.addEventListener("click", () => {
+      modal.remove();
+      return false;
+    });*/
+  }
 
 
 // SET tuto test

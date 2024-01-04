@@ -601,7 +601,7 @@ input[type="submit"] {
 }
 .fa-solid {
 	color: #ffffff;
-	font-size: 14px;
+	font-size: 11px;
 }
 .center {
 	display: flex;
@@ -634,3 +634,83 @@ input[type="submit"] {
 	cursor: pointer;
 }
 
+/************* modal oui/non *************/
+
+  
+  .modal-header {
+	padding: 10px;
+  }
+  
+  .modal-body {
+	padding: 10px;
+  }
+  
+  .modal-footer {
+	padding: 10px;
+	text-align: right;
+  }
+  
+  .btn {
+	padding: 10px 20px;
+	border-radius: 5px;
+  }
+  
+  .btn-primary {
+	background-color: #007bff;
+	color: #fff;
+  }
+  
+  .btn-secondary {
+	background-color: #999;
+	color: #fff;
+  }
+  /************ fin modal oui/non ***********/
+#abcdef { /* shape container dialog */
+	width: 120px;
+	height: 80px;
+	margin-left: auto;
+	margin-right: auto;
+	top: 200px;
+	border-radius: 5px;
+	background-color: rgba(255, 255, 255, 0.6);
+	border: 1px solid black;
+	z-index: 100;
+	box-shadow: #000000;
+}
+#styleH1Dialog {
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-weight: 800;
+	color: #8b0505;	
+}
+.styleDivDialog { /* container button OUI/NON */
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.styleButtDialog {
+		font-family: 'Syne';
+		font-weight: 400;
+		font-size: 10px;
+		color: #1D6154;
+		background-color: #ffffff;
+		border: 1px solid #1D6154;
+		width: auto;
+		padding-left: 1em;
+		padding-right: 1em;
+		padding-bottom: 0.4em;
+		padding-top: 0.4em;
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-bottom: 10px;
+		text-align: center;
+		border-radius: 60px;
+}
+.styleButtDialog:hover {
+	background-color: #1D6154;
+	color: white;
+	cursor: pointer;
+}

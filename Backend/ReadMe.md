@@ -19,3 +19,22 @@ Lien pour voir la
 [documentation Swagger](http://localhost:5678/api-docs/)
 
 Pour lire la documentation, utiliser Chrome ou Firefox
+
+
+function deleteData(url, id) {
+  return fetch(url + "/" + id, {
+    method: "DELETE",
+  })
+    .then(response => response.status === 204)
+    .catch(error => {
+      throw new Error(error);
+    });
+}
+
+const result = confirm();
+
+if (result) {
+  // Supprimer l'élément
+} else {
+  // Ne pas supprimer l'élément
+}
