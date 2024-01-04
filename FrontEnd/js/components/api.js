@@ -3,7 +3,7 @@ const CATEGORIES_URL_get = 'http://localhost:5678/api/categories'
 const WORK_URL_get = 'http://localhost:5678/api/works'
 //const LOGIN_URL_post = 'http://localhost:5678/api/users/login'
 //const WORK_URL_post = 'http://localhost:5678/api/works'
-const WORK_URL_deleteId = 'http://localhost:5678/api/works/2'
+const WORK_URL_deleteId = 'http://localhost:5678/api/works'
 
 
 // WORK_URL_get)
@@ -62,7 +62,7 @@ export const postLogin = data => fetch('http://localhost:5678/api/users/login', 
   })
 
 // delete WORKS by Id (on modal ONLY withn modifier button)
-export const deleteById = (getModalId, token) => fetch(WORK_URL_deleteId, { //, {
+export const deleteById = (getModalId, token) => fetch(WORK_URL_deleteId + '/' + getModalId, {
   method: "DELETE",
   headers: {
     Authorization: `Bearer ${token}`,
