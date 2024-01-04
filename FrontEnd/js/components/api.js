@@ -70,6 +70,7 @@ export const deleteById = (getModalId, token) => fetch(WORK_URL_deleteId + '/' +
 })
 .then((response) => {
   console.log(getModalId)
+  console.log(response.status)
   if (response.status === 200) {
     console.log("La ressource a été supprimée avec succès.");
   } else {
