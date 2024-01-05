@@ -175,7 +175,7 @@ const createCategories = data => {
     console.log(document.querySelector('.containerButtons').children.length + ' enfant')
 }
 
-/* build gallery */
+/* build gallery index.html & modal */
 getWorks().then(data => {
     createGallery(data, 0)
     createGallery(data, 1, galleryModal)
@@ -185,7 +185,7 @@ if (!localStorage.token) { // hide en logOut
     getCategories().then(data => createCategories(data))
 }
 
-
+// GESTION DELETE PIC MODAL
 function confirm(item, token) {
     console.log(item)
     console.log(token)
@@ -199,6 +199,13 @@ function confirm(item, token) {
         //console.log('oui')
         console.log('supprimé !!')
         deleteById(item, token)
+        // RECHARGER les images dasn index.html & modal (IMPORTANT)
+        /* build gallery index.html & modal */
+        getWorks().then(data => {
+            createGallery(data, 0)
+            createGallery(data, 1, galleryModal)
+        })
+        console.log('index.html & modal DELETE works mis à jour !!')
     })
 
     // Ne pas supprimer l'élément
@@ -209,7 +216,7 @@ function confirm(item, token) {
         //console.log('non')
         console.log('NON supprimé !!')
     })
-
+ }
 
     
   /*
@@ -224,7 +231,7 @@ function confirm(item, token) {
       modal.remove();
       return false;
     });*/
-  }
+ 
 
 
 // SET tuto test
