@@ -197,7 +197,7 @@ function confirm(item, token) {
         document.getElementById("abcdef").close()
         //console.log(oui)
         //console.log('oui')
-        console.log('supprimé !!')
+        //console.log('supprimé !!')
         deleteById(item, token)
         // RECHARGER les images dasn index.html & modal (IMPORTANT)
         /* build gallery index.html & modal */

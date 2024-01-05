@@ -70,13 +70,7 @@ export const deleteById = (getModalId, token) => fetch(WORK_URL_deleteId + '/' +
 })
 .then((response) => {
   console.log(getModalId)
-  console.log(response.status)
-  if (response.status === 204) {
-    console.log("La ressource a été supprimée avec succès.");
-  } else {
-    console.log("La suppression de la ressource a échoué.");
-  }
-  //console.log('Code ${reponse.status} ${response.statusText}')
+  console.log(`reponse server:  ${response.status}`)
 })
   /*else {
     // Code 500 : erreur interne du serveur
