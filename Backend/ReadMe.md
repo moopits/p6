@@ -38,3 +38,7 @@ if (result) {
 } else {
   // Ne pas supprimer l'élément
 }
+
+
+ICON image modal telechargement
+<i class="fa-regular fa-image"></i>

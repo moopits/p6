@@ -205,7 +205,7 @@ function confirm(item, token) {
             createGallery(data, 0)
             createGallery(data, 1, galleryModal)
         })
-        console.log('index.html & modal DELETE works mis à jour !!')
+        console.log('index.html & modal image BD works TOUS mis à jour !!')
     })
 
     // Ne pas supprimer l'élément

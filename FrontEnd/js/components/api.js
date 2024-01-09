@@ -62,7 +62,7 @@ export const postLogin = data => fetch('http://localhost:5678/api/users/login', 
   })
 
 // delete WORKS by Id (on modal ONLY withn modifier button)
-export const deleteById = (getModalId, token) => fetch(WORK_URL_deleteId + '/' + getModalId, {
+export const deleteById = async (getModalId, token) => await fetch(WORK_URL_deleteId + '/' + getModalId, {
   method: "DELETE",
   headers: {
     Authorization: `Bearer ${token}`,
