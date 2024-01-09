@@ -48,9 +48,9 @@ if (localStorage.token) {
  * @param {Array} data - Array of object data get works
  * @param {HTMLElement} container - container gallery from home page or modal
  */
-const createGallery = (data, isModal = false, container = gallery) => {
+const createGallery = (data, ag, container = gallery) => {
     container.innerHTML = ''
-    console.log("isModal:", isModal)
+    console.log(ag)
 
     data.forEach(item => {
         const figure = document.createElement('figure')
@@ -62,7 +62,7 @@ const createGallery = (data, isModal = false, container = gallery) => {
         //const figCaption = document.createElement('figcaption')
         // CONTROL AFFICH texte ONLY INDEX.html
         // &&
-        if(isModal) {
+        if(ag) {
             console.log('modal')
             const div = document.createElement('div')
             // click ON for delete -GET id categorie
@@ -70,7 +70,10 @@ const createGallery = (data, isModal = false, container = gallery) => {
                 console.log('click ON  ' + 'item.id= ' + item.id + ' item.catId= ' + item.categoryId)
                 
                 // modal CONFIRM supp pic Modal WORKS
-                confirm(item.id)
+                //if (localStorage.("token")) {
+                    const token = localStorage.getItem("token");
+                  //}
+                confirm(item.id, token)
                 /********if (result) {
                   // Supprimer l'élément
                   console.log('supprimé !!')
@@ -174,8 +177,8 @@ const createCategories = data => {
 
 /* build gallery index.html & modal */
 getWorks().then(data => {
-    createGallery(data)
-    createGallery(data, true, galleryModal)
+    createGallery(data, 0)
+    createGallery(data, 1, galleryModal)
 })
 /* build categories */
 if (!localStorage.token) { // hide en logOut
@@ -183,8 +186,9 @@ if (!localStorage.token) { // hide en logOut
 }
 
 // GESTION DELETE PIC MODAL
-function confirm(id) {
-    console.log(id)
+function confirm(item, token) {
+    console.log(item)
+    console.log(token)
     // Supprimer l'élément
     //console.log(document.getElementById("abcdef"))
     document.getElementById("abcdef").show()
@@ -194,15 +198,13 @@ function confirm(id) {
         //console.log(oui)
         //console.log('oui')
         //console.log('supprimé !!')
-        deleteById(id)
-            .then(() => getWorks())
-            .then(data => {
-                createGallery(data)
-                createGallery(data, true, galleryModal)
-            })
+        deleteById(item, token)
         // RECHARGER les images dasn index.html & modal (IMPORTANT)
         /* build gallery index.html & modal */
-        
+        getWorks().then(data => {
+            createGallery(data, 0)
+            createGallery(data, 1, galleryModal)
+        })
         console.log('index.html & modal image BD works TOUS mis à jour !!')
     })
 
