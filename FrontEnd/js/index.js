@@ -188,11 +188,16 @@ if (!localStorage.token) { // hide en logOut
 function confirm(id) {
     console.log(id)
     document.getElementById("modalDialogBkgGrey").show()
+
+ }
+
+
+function event_oui_non() {
     // OUI
     const oui = document.querySelector('#oui')
     oui.addEventListener('click', () => {
         // CLOSE modal
-        document.getElementById("modalDialogBkgGrey").close()
+        //document.getElementById("modalDialogBkgGrey").close()
     
         console.log('fetch_response = ' + fetch_response)
         /*deleteById(id)
@@ -209,13 +214,15 @@ function confirm(id) {
 
     // NON
     const non = document.querySelector('#non')
-    non.addEventListener('click', (event) => {
-        event.preventDefault()
+    non.addEventListener('click', () => {
+        //event.preventDefault()
         // Close modal
         //document.getElementById("modalDialogBkgGrey").close()
         console.log('photo NON supprimé !!')
     })
- }
+}
+
+event_oui_non()
 
     
   /*
