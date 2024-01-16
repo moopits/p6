@@ -5,6 +5,8 @@ const WORK_URL_get = 'http://localhost:5678/api/works'
 //const WORK_URL_post = 'http://localhost:5678/api/works'
 const WORK_URL_deleteId = 'http://localhost:5678/api/works'
 
+// varible de test count # count réalisé
+let testInfo_deleteById = 0
 
 // WORK_URL_get)
 export const getWorks = () => fetch(WORK_URL_get).then((response) => {//.then(data => data.json())
@@ -30,9 +32,9 @@ export const getWorks = () => fetch(WORK_URL_get).then((response) => {//.then(da
 export const getCategories = () => fetch(CATEGORIES_URL_get).then((response) => {//.then(data => data.json())
   if (response.status === 200) {
     // Code 200 : succès
-    const data = response.json();
+    const data = response.json()
     console.log("Réponse reçue avec succès pour CATEGORIES_URL");
-    console.log(data);
+    console.log(data)
     return data
   } 
   else if (response.status === 500) {
@@ -61,17 +63,56 @@ export const postLogin = data => fetch('http://localhost:5678/api/users/login', 
     return data
   })
 
-// delete WORKS by Id (on modal ONLY withn modifier button)
-export const deleteById = id => fetch(WORK_URL_deleteId + '/' + id, {
+
+// MODIFIED delete WORKS by Id (on modal ONLY withn modifier button)
+export const deleteById = id => {
+  fetch(WORK_URL_deleteId + '/' + id, {
+  method: "DELETE",
+  headers: {
+    Authorization: `Bearer ${localStorage.token}`,
+  },
+})
+
+
+
+}
+
+
+//while (!deleteById.isFulfilled())
+/*.then((response) => {
+  console.log('testInfo_deleteById count: ' + testInfo_deleteById)
+  testInfo_deleteById = testInfo_deleteById + 1
+  console.log(id)
+  console.log(`reponse server:  ${response.status}`)
+  console.log('testInfo_deleteById count: ' + testInfo_deleteById)
+})*/
+
+/*
+const response = fetch("https://example.com");
+
+// Attendre que la réponse soit résolue
+const data = await response.json();
+
+// Affichage des données
+console.log(data);*/
+
+// ORIGINAL delete WORKS by Id (on modal ONLY withn modifier button)
+/*export const deleteById = id => fetch(WORK_URL_deleteId + '/' + id, {
   method: "DELETE",
   headers: {
     Authorization: `Bearer ${localStorage.token}`,
   },
 })
 .then((response) => {
+  console.log('testInfo_deleteById count: ' + testInfo_deleteById)
+  testInfo_deleteById = testInfo_deleteById + 1
   console.log(id)
   console.log(`reponse server:  ${response.status}`)
-})
+  console.log('testInfo_deleteById count: ' + testInfo_deleteById)
+})*/
+
+
+
   /*else {
     // Code 500 : erreur interne du serveur
     // cré une instance Error

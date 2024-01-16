@@ -190,11 +190,11 @@ function confirm(item, token) {
     console.log(item)
     console.log(token)
     // Supprimer l'élément
-    //console.log(document.getElementById("abcdef"))
-    document.getElementById("abcdef").show()
+    //console.log(document.getElementById("modalDialogBkgGrey"))
+    document.getElementById("modalDialogBkgGrey").show()
     const oui = document.querySelector('.oui')
     oui.addEventListener('click', () => {
-        document.getElementById("abcdef").close()
+        document.getElementById("modalDialogBkgGrey").close()
         //console.log(oui)
         //console.log('oui')
         //console.log('supprimé !!')
@@ -211,7 +211,7 @@ function confirm(item, token) {
     // Ne pas supprimer l'élément
     const non = document.querySelector('.non')
     non.addEventListener('click', () => {
-        document.getElementById("abcdef").close()
+        document.getElementById("modalDialogBkgGrey").close()
         //console.log(non)
         //console.log('non')
         console.log('NON supprimé !!')

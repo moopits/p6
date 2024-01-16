@@ -5,6 +5,7 @@ import { displayModal } from "./components/modal.js";
 import { deleteById } from "./components/api.js"
 
 
+
 // condition IF sur login page OK
 if (localStorage.token) {
     loginA.innerHTML = 'logout'
@@ -186,11 +187,11 @@ if (!localStorage.token) { // hide en logOut
 function confirm(id) {
     console.log(id)
     // Supprimer l'élément
-    //console.log(document.getElementById("abcdef"))
-    document.getElementById("abcdef").show()
+    //console.log(document.getElementById("modalDialogBkgGrey"))
+    document.getElementById("modalDialogBkgGrey").show()
     const oui = document.querySelector('.oui')
     oui.addEventListener('click', () => {
-        document.getElementById("abcdef").close()
+        document.getElementById("modalDialogBkgGrey").close()
         //console.log(oui)
         //console.log('oui')
         //console.log('supprimé !!')
@@ -209,10 +210,10 @@ function confirm(id) {
     // Ne pas supprimer l'élément
     const non = document.querySelector('.non')
     non.addEventListener('click', () => {
-        document.getElementById("abcdef").close()
+        document.getElementById("modalDialogBkgGrey").close()
         //console.log(non)
         //console.log('non')
-        console.log('NON supprimé !!')
+        console.log('photo NON supprimé !!')
     })
  }
 

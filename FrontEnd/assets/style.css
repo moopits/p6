@@ -665,7 +665,7 @@ input[type="submit"] {
 	color: #fff;
   }
   /************ fin modal oui/non ***********/
-#abcdef { /* shape container dialog */
+#modalDialogBkgGrey { /* shape container dialog */
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -677,7 +677,7 @@ input[type="submit"] {
 	z-index: 10;
 	background-color: rgba(0, 0, 0, 0.3);
 }
-#abcdef_realModal {
+#modalDialogBkgGrey_realModal {
 	box-sizing: border-box;
 	width: 140px;
 	height: 100px;
