@@ -5,7 +5,7 @@ import { displayModal } from "./components/modal.js";
 import { deleteById, fetch_response } from "./components/api.js"
 
 
-
+let testModalFunction = 0
 let testModal = 0
 
 // condition IF sur login page OK
@@ -186,9 +186,9 @@ if (!localStorage.token) { // hide en logOut
 
 // GESTION DELETE PIC MODAL
 function confirm(id) {
-    console.log(id)
+    //////////////// console.log(id)
     document.getElementById("modalDialogBkgGrey").show()
-    event_oui_non()
+    
  }
 
 
@@ -199,7 +199,7 @@ function event_oui_non() {
         // CLOSE modal
         document.getElementById("modalDialogBkgGrey").close()
     
-        console.log('fetch_response = ' + fetch_response)
+        /////////////console.log('fetch_response = ' + fetch_response)
         /*deleteById(id)
             .then(() => console.log('fetch_response = ' + fetch_response))
             .then(() => getWorks())
@@ -216,14 +216,18 @@ function event_oui_non() {
     const non = document.querySelector('#non')
     non.addEventListener('click', (event) => {
         //event.preventDefault()
+        testModal = testModal + 1
+        console.log(`testModal = ${testModal}`)
         // Close modal
-        /////////document.getElementById("modalDialogBkgGrey").close()
-        console.log('photo NON supprimé !!')
+        document.getElementById("modalDialogBkgGrey").close()
+        //console.log('photo NON supprimé !!')
     })
+    testModalFunction = testModalFunction + 1
+    console.log(`testModalFunction = ${testModalFunction}`)
 }
 
 
-
+event_oui_non()
     
   /*
     const yesButton = modal.querySelector(".btn-primary");
