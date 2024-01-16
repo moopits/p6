@@ -6,8 +6,9 @@ import { deleteById, fetch_response } from "./components/api.js"
 
 
 let testModalFunction = 0
+let testModalEvenOui = 0
+let testModalEvenNon = 0
 let testModal = 0
-
 // condition IF sur login page OK
 if (localStorage.token) {
     loginA.innerHTML = 'logout'
@@ -196,6 +197,10 @@ function event_oui_non() {
     // OUI
     const oui = document.querySelector('#oui')
     oui.addEventListener('click', () => {
+        testModalEvenOui = testModalEvenOui + 1
+        console.log(`testModalEvenOui= ${testModalEvenOui}`)
+
+
         // CLOSE modal
         document.getElementById("modalDialogBkgGrey").close()
     
@@ -216,8 +221,8 @@ function event_oui_non() {
     const non = document.querySelector('#non')
     non.addEventListener('click', (event) => {
         //event.preventDefault()
-        testModal = testModal + 1
-        console.log(`testModal = ${testModal}`)
+        testModalEvenNon = testModalEvenNon + 1
+        console.log(`testModalEvenNon = ${testModalEvenNon}`)
         // Close modal
         document.getElementById("modalDialogBkgGrey").close()
         //console.log('photo NON supprimé !!')
