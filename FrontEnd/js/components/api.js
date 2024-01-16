@@ -7,14 +7,15 @@ const WORK_URL_deleteId = 'http://localhost:5678/api/works'
 
 // varible de test count # count réalisé
 let testInfo_deleteById = 0
+export let fetch_response = 0
 
 // WORK_URL_get)
 export const getWorks = () => fetch(WORK_URL_get).then((response) => {//.then(data => data.json())
   if (response.status === 200) {
     // Code 200 : succès
-    const data = response.json();
-    console.log("Réponse reçue avec succès WORK_URL");
-    console.log(data);
+    const data = response.json()
+    console.log("Réponse reçue avec succès WORK_URL")
+    console.log(data)
     return data
   } 
   else if (response.status === 500) {
@@ -22,7 +23,7 @@ export const getWorks = () => fetch(WORK_URL_get).then((response) => {//.then(da
     // cré une instance Error
     const error = new Error("Erreur interne du serveur pour WORK_URL");
     error.status = response.status;
-    error.message = response.statusText;
+    error.message = response.statusText
 
     // Ouvre une petite fenêtre avec le code d'erreur et sa définition
     alert(error);
@@ -42,7 +43,7 @@ export const getCategories = () => fetch(CATEGORIES_URL_get).then((response) => 
     // cré une instance Error
     const error = new Error("Erreur interne du serveur pour CATEGORIES_URL");
     error.status = response.status;
-    error.message = response.statusText;
+    error.message = response.statusText
 
     // Ouvre une petite fenêtre avec le code d'erreur et sa définition
     alert(error);
@@ -65,15 +66,20 @@ export const postLogin = data => fetch('http://localhost:5678/api/users/login', 
 
 
 // MODIFIED delete WORKS by Id (on modal ONLY withn modifier button)
-export const deleteById = id => {
-  fetch(WORK_URL_deleteId + '/' + id, {
+export const deleteById = async (id) => {
+  await fetch(WORK_URL_deleteId + '/' + id, {
   method: "DELETE",
   headers: {
     Authorization: `Bearer ${localStorage.token}`,
   },
 })
+.then((response) => {
+  console.log(`reponse server:  ${response.status}`)
+  //return(fetch_response = response.status)
+  fetch_response = response.status
+})
 
-
+console.log('test fetch() api.js DELETE work')
 
 }
 

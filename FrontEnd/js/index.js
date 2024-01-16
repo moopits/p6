@@ -2,9 +2,11 @@ import { gallery, filterContainer, loginA, galleryModal } from "./components/dom
 import { getWorks } from "./components/api.js";
 import { getCategories } from "./components/api.js";
 import { displayModal } from "./components/modal.js";
-import { deleteById } from "./components/api.js"
+import { deleteById, fetch_response } from "./components/api.js"
 
 
+
+let testModal = 0
 
 // condition IF sur login page OK
 if (localStorage.token) {
@@ -28,7 +30,7 @@ if (localStorage.token) {
     const b_modifier = document.querySelector('#clic_b_modifier')
     console.log(b_modifier)
     b_modifier.addEventListener("click", () => {
-        console.log('clickOn')
+        console.log('modifier -> click ON -> modal show()')
         displayModal()
     })
 
@@ -36,7 +38,7 @@ if (localStorage.token) {
     const l_logOut = document.querySelector('.clic_l_logOut')
     console.log(l_logOut)
     l_logOut.addEventListener("click", () => {
-        console.log('clickOn')
+        console.log('click OUT')
         // changer nom lien
         loginA.innerHTML = 'logIn'
         //localStorage.removeItem("token")
@@ -51,7 +53,6 @@ if (localStorage.token) {
  */
 const createGallery = (data, isModal = false, container = gallery) => {
     container.innerHTML = ''
-    console.log("isModal:", isModal)
 
     data.forEach(item => {
         const figure = document.createElement('figure')
@@ -64,12 +65,12 @@ const createGallery = (data, isModal = false, container = gallery) => {
         // CONTROL AFFICH texte ONLY INDEX.html
         // &&
         if(isModal) {
-            console.log('modal')
+            console.log('modal false/true = ' + isModal)
             const div = document.createElement('div')
             // click ON for delete -GET id categorie
             div.addEventListener('click', () => {
                 console.log('click ON  ' + 'item.id= ' + item.id + ' item.catId= ' + item.categoryId)
-                
+                console.log(`testModal = ${testModal = testModal + 1}` )
                 // modal CONFIRM supp pic Modal WORKS
                 confirm(item.id)
                 /********if (result) {
@@ -186,33 +187,32 @@ if (!localStorage.token) { // hide en logOut
 // GESTION DELETE PIC MODAL
 function confirm(id) {
     console.log(id)
-    // Supprimer l'élément
-    //console.log(document.getElementById("modalDialogBkgGrey"))
     document.getElementById("modalDialogBkgGrey").show()
-    const oui = document.querySelector('.oui')
+    // OUI
+    const oui = document.querySelector('#oui')
     oui.addEventListener('click', () => {
+        // CLOSE modal
         document.getElementById("modalDialogBkgGrey").close()
-        //console.log(oui)
-        //console.log('oui')
-        //console.log('supprimé !!')
-        deleteById(id)
+    
+        console.log('fetch_response = ' + fetch_response)
+        /*deleteById(id)
+            .then(() => console.log('fetch_response = ' + fetch_response))
             .then(() => getWorks())
             .then(data => {
                 createGallery(data)
                 createGallery(data, true, galleryModal)
-            })
+            })*/
         // RECHARGER les images dasn index.html & modal (IMPORTANT)
         /* build gallery index.html & modal */
-        
-        console.log('index.html & modal image BD works TOUS mis à jour !!')
+        //console.log('index.html & modal image BD works TOUS mis à jour !!')
     })
 
-    // Ne pas supprimer l'élément
-    const non = document.querySelector('.non')
-    non.addEventListener('click', () => {
-        document.getElementById("modalDialogBkgGrey").close()
-        //console.log(non)
-        //console.log('non')
+    // NON
+    const non = document.querySelector('#non')
+    non.addEventListener('click', (event) => {
+        event.preventDefault()
+        // Close modal
+        //document.getElementById("modalDialogBkgGrey").close()
         console.log('photo NON supprimé !!')
     })
  }
