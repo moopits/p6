@@ -14,7 +14,7 @@ export const getWorks = () => fetch(WORK_URL_get).then((response) => {//.then(da
   if (response.status === 200) {
     // Code 200 : succès
     const data = response.json()
-    console.log("Réponse reçue avec succès WORK_URL")
+    console.log("5 - actualisation -> fonction getWorks Réponse reçue avec succès WORK_URL api.js")
     console.log(data)
     return data
   } 
@@ -67,6 +67,7 @@ export const postLogin = data => fetch('http://localhost:5678/api/users/login', 
 
 // MODIFIED delete WORKS by Id (on modal ONLY withn modifier button)
 export const deleteById = async (id) => {
+  console.log(`1 - modifierWorksItemId api.js = ` + id)
   await fetch(WORK_URL_deleteId + '/' + id, {
   method: "DELETE",
   headers: {
@@ -74,12 +75,12 @@ export const deleteById = async (id) => {
   },
 })
 .then((response) => {
-  console.log(`reponse server:  ${response.status}`)
+  console.log(`2 - reponse server function deleteById api.js = ${response.status}`)
   //return(fetch_response = response.status)
   fetch_response = response.status
 })
 
-console.log('test fetch() api.js DELETE work')
+console.log('3 - ctrl fetch() api.js DELETE work fin de function api.js')
 
 }
 

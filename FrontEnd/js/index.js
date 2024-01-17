@@ -9,6 +9,9 @@ let testModalFunction = 0
 let testModalEvenOui = 0
 let testModalEvenNon = 0
 let testModal = 0
+let modifierWorksItemId = 0
+
+
 // condition IF sur login page OK
 if (localStorage.token) {
     loginA.innerHTML = 'logout'
@@ -73,7 +76,7 @@ const createGallery = (data, isModal = false, container = gallery) => {
                 console.log('click ON  ' + 'item.id= ' + item.id + ' item.catId= ' + item.categoryId)
                 console.log(`testModal = ${testModal = testModal + 1}` )
                 // modal CONFIRM supp pic Modal WORKS
-                confirm(item.id)
+                modifierWorks(item.id)
                 /********if (result) {
                   // Supprimer l'élément
                   console.log('supprimé !!')
@@ -186,10 +189,10 @@ if (!localStorage.token) { // hide en logOut
 }
 
 // GESTION DELETE PIC MODAL
-function confirm(id) {
+function modifierWorks(id) {
     //////////////// console.log(id)
     document.getElementById("modalDialogBkgGrey").show()
-    
+    modifierWorksItemId = id
  }
 
 
@@ -199,19 +202,20 @@ function event_oui_non() {
     oui.addEventListener('click', () => {
         testModalEvenOui = testModalEvenOui + 1
         console.log(`testModalEvenOui= ${testModalEvenOui}`)
+        console.log(`modifierWorksItemId index.js = ` + modifierWorksItemId)
 
 
         // CLOSE modal
         document.getElementById("modalDialogBkgGrey").close()
     
         /////////////console.log('fetch_response = ' + fetch_response)
-        /*deleteById(id)
-            .then(() => console.log('fetch_response = ' + fetch_response))
+        deleteById(modifierWorksItemId)
+            .then(() => console.log('4 - fetch_response .then apres deletByid index.js = ' + fetch_response))
             .then(() => getWorks())
             .then(data => {
                 createGallery(data)
                 createGallery(data, true, galleryModal)
-            })*/
+            })
         // RECHARGER les images dasn index.html & modal (IMPORTANT)
         /* build gallery index.html & modal */
         //console.log('index.html & modal image BD works TOUS mis à jour !!')
@@ -225,10 +229,10 @@ function event_oui_non() {
         console.log(`testModalEvenNon = ${testModalEvenNon}`)
         // Close modal
         document.getElementById("modalDialogBkgGrey").close()
-        //console.log('photo NON supprimé !!')
+        console.log('photo NON supprimé !!')
     })
     testModalFunction = testModalFunction + 1
-    console.log(`testModalFunction = ${testModalFunction}`)
+    console.log(`testModalFunction =` + testModalFunction)
 }
 
 
