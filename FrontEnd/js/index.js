@@ -10,6 +10,7 @@ let testModalEvenOui = 0
 let testModalEvenNon = 0
 let testModal = 0
 let modifierWorksItemId = 0
+const keepCategoriesName = []
 
 
 // condition IF sur login page OK
@@ -139,15 +140,25 @@ const createCategories = data => {
     filterContainer.appendChild(buttonTous)
 
     // create buttons loop with 'name from categories db' with categories.length
+    // save data name: pour utiliser dans le select de la modal
+    // ajouter photo
     for (let i = 0; i < data.length; i++) {
+        // save name: des categories pour modal
+        // Ajoute la string à la fin du tableau strings (21/01)
+        keepCategoriesName.push(data[i].name)
+
+        // creation des buttons
         const buttonOthers = document.createElement("button")
         buttonOthers.classList.add("button" + i)
         buttonOthers.classList.add("styleFont")
         buttonOthers.classList.add("styleShape")
         //buttonOthers.classList.add("displayButtonLogOut")
 
-
-        buttonOthers.innerText = data[i].name;
+        buttonOthers.innerText = data[i].name
+        // AFFICHE NOMS CATEGORIES CONTROLE 
+        //console.log(data) // control ONLY
+        console.log(data[i].name) // control ONLY original
+        console.log(keepCategoriesName[i]) // control ONLY compare
 
         // add event on button
         buttonOthers.addEventListener('click', () => {
@@ -186,6 +197,7 @@ getWorks().then(data => {
 /* build categories */
 if (!localStorage.token) { // hide en logOut
     getCategories().then(data => createCategories(data))
+
 }
 
 // GESTION DELETE PIC MODAL

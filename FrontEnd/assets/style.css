@@ -543,20 +543,23 @@ input[type="submit"] {
 	background-color: white;
 }
 
-#modal-btn-close {
+#modal-btn-close { /* button close */
 	position: absolute;
 	top: 20px;
 	right: 20px;
-	cursor: pointer;
-	height: 40px;
-	width: 40px;
+	border: none;
 	background-color: transparent;
-	color: black;
-	display: flex;
+	cursor: pointer;
+	height: auto;
+	width: auto;
+	padding: 0px;
+	/*background-color: transparent;*/
+	/*color: black;*/
+	/*display: flex;
 	align-items: center;
-	justify-content: center;
-	font-weight: 600;
-	font-size: large;
+	justify-content: center;*/
+	/*font-weight: 600;
+	font-size: large;*/
 }
 
 .modal-main h2 {
@@ -735,4 +738,36 @@ input[type="submit"] {
 	background-color: #1D6154;
 	color: white;
 	cursor: pointer;
+}
+
+#clickToModal1 { /* button arrow */
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	height: auto;
+	width: auto;
+	display: inline-block;
+	padding: 0px;
+	/*background-color: transparent;*/
+	/*color: black;*/
+	/*display: flex;
+	align-items: center;
+	justify-content: center;*/
+	/*font-weight: 600;
+	font-size: 30px;*/
+}
+
+.sizeCls {
+	font-size: 17px;
+	margin-top: 0px;
+}
+.styleArw {
+	font-size: 20px;
+}
+.modal-main #clickToModal1 i,
+.modal-main #modal-btn-close i{
+	color: #000000;
 }
