@@ -740,7 +740,7 @@ input[type="submit"] {
 	cursor: pointer;
 }
 
-#clickToModal1 { /* button arrow */
+#modal-btn-arrow { /* button arrow */
 	position: absolute;
 	top: 20px;
 	left: 20px;
@@ -749,7 +749,7 @@ input[type="submit"] {
 	cursor: pointer;
 	height: auto;
 	width: auto;
-	display: inline-block;
+	display: none; /* inline-block; -> modal 2 */
 	padding: 0px;
 	/*background-color: transparent;*/
 	/*color: black;*/
@@ -767,7 +767,28 @@ input[type="submit"] {
 .styleArw {
 	font-size: 20px;
 }
-.modal-main #clickToModal1 i,
-.modal-main #modal-btn-close i{
+.modal-main #modal-btn-arrow i,
+.modal-main #modal-btn-close i {
 	color: #000000;
 }
+
+.modal-main .modal-style {  /* style modal 2 */
+	width: 440px;
+	height: 300px;
+	background-color: #007bff;
+	/*margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 50px;
+	margin-bottom: 30px;*/
+	border-bottom: 1px solid rgba(179, 179, 179, 1);
+}
+
+.modal-1-display{
+	display: inline-block;
+}
+
+.modal-2-display{
+	display: none;
+}
+
