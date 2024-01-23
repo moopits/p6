@@ -4,6 +4,7 @@ import {    modal,
             modalBtnAjouter,
             modalBtnArrow
         } from "./domLinker.js"
+import { getCategories } from "./api.js"
 
 export const displayModal = () => modal.style.display = "block"
 const hideModal = () => modal.style.display = "none"
@@ -48,15 +49,12 @@ modalBtnArrow.addEventListener('click', () => {
     textSpanBtnGrey.className = "textSpanBtnGrey"
     textSpanBtnGrey.innerText = "jpg, png : 4mo max"
     div1.appendChild(textSpanBtnGrey)
-
     modalSectionDiv1.appendChild(div1)
 
-
-    //cré le formulaire modal 2
-    /*const section = document.querySelector("#modal-section-div-1")
-    const div = document.createElement("div")
-    div.textContent = "Nouvelle div"
-    section.appendChild(div)************/
+    // modif class btn modal 2 bottom (styleFontShape->styleFontShape3)
+    const modalBtnAjouter = document.getElementById("modal-btn-ajouter")
+    modalBtnAjouter.classList.remove('styleFontShape')
+    modalBtnAjouter.classList.add('styleFontShape3')
 
     // modif titre H2 modal 2
     const modal2h2 = document.querySelector(".modal-main h2")
@@ -65,6 +63,13 @@ modalBtnArrow.addEventListener('click', () => {
     const modal2btnTitle = document.querySelector("#modal-section-div-2  button")
     modal2btnTitle.innerText = "Valider"
 
+    // get categories
+    getCategories().then(data => {
+        console.log(data)
+    })
+
+
+    
     //modif hover button bottom GREY et NO click
     // tant que pas cat et photo (champs rempli et validé !!)
    
@@ -74,16 +79,7 @@ modalBtnArrow.addEventListener('click', () => {
     
     
     
-    // ajoute une div
-    /*********const modalDiv = document.createElement("div");
-    modalDiv.textContent = "Nouvelle div";
 
-    modalSection.appendChild(modalDiv);**********/
-    //console.log(modalSection.getAttribute('class'))
-    //console.log(modalSection.classList.value)
-    //console.log(modalSection.getAttribute('class'))
-    //modalSection.setAttribute("id", "my-new-section");
-    // modalSection.setAttribute = "new-class"
 
 
 })

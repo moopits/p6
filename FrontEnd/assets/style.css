@@ -653,6 +653,7 @@ input[type="submit"] {
 	padding-right: 1em;
 	padding-bottom: 0.4em;
 	padding-top: 0.4em;
+	margin-top: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 10px;
@@ -661,11 +662,35 @@ input[type="submit"] {
 }
 .styleFontShape2:hover {
 	background-color: #A7A7A7;
-	color: #306685;
+	color: #ffffff;
 	cursor: pointer;
 }
 
-
+.styleFontShape3 {
+	color: #ffffff;
+	background-color: #A7A7A7;
+	border: 1px solid #A7A7A7;
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 16px;
+	letter-spacing: 0em;
+	text-align: center;
+	width: auto;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 0.4em;
+	padding-top: 0.4em;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	border-radius: 60px;
+}
+.styleFontShape3:hover {
+	background-color: #A7A7A7;
+	color: #ffffff;
+}
 /************* modal oui/non *************/
 
   
@@ -914,4 +939,6 @@ input[type="submit"] {
 	letter-spacing: 0em;
 	text-align: center;
 	color: #444444;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
