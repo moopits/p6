@@ -64,8 +64,16 @@ modalBtnArrow.addEventListener('click', () => {
     modal2btnTitle.innerText = "Valider"
 
     // get categories
+    const categoriesForm = []
     getCategories().then(data => {
         console.log(data)
+        for (let i = 0; i < data.length; i++) {
+            const category = data[i];
+            console.log(`Category ${i + 1}: ${category.name}`);
+            console.log(`id = ${data[i].id}`)
+            categoriesForm[i] = data[i].name
+            console.log(categoriesForm[i])
+        }
     })
 
 
