@@ -32,8 +32,25 @@ modalBtnArrow.addEventListener('click', () => {
     modalSectionDiv1.classList.add('modal-style')
 
     //cré div pour icon, btn, text modal 2 (modalSectionDiv1)
-    const div1 = document.createElement("div")
+    const div1 = document.createElement("div") // container
+    div1.className = "modal-style-2"
+    const iconImg = document.createElement("i") // ele
+    iconImg.classList.add("fa-regular")
+    iconImg.classList.add("fa-image")
+    iconImg.classList.add("icon-img-size")
+    div1.appendChild(iconImg)
+    const btnImg1 = document.createElement("button") // ele
+    btnImg1.textContent = "+ Ajouter photo"
+    btnImg1.classList.add( "styleFontShape2")
+    //btnImg1.classList.add("btn-color-grey-modal-2")
+    div1.appendChild(btnImg1)
+    const textSpanBtnGrey = document.createElement("span") // ele
+    textSpanBtnGrey.className = "textSpanBtnGrey"
+    textSpanBtnGrey.innerText = "jpg, png : 4mo max"
+    div1.appendChild(textSpanBtnGrey)
+
     modalSectionDiv1.appendChild(div1)
+
 
     //cré le formulaire modal 2
     /*const section = document.querySelector("#modal-section-div-1")
@@ -43,12 +60,20 @@ modalBtnArrow.addEventListener('click', () => {
 
     // modif titre H2 modal 2
     const modal2h2 = document.querySelector(".modal-main h2")
-    modal2h2.textContent = "Ajout photo"
-    // modif texte btn vert
-    const modal2btnTitle = document.querySelector(".modal-main #container-button-gallery button")
-    modal2btnTitle.textContent = "Valider"
+    modal2h2.innerText = "Ajout photo"
+    // modif texte btn vert bottom
+    const modal2btnTitle = document.querySelector("#modal-section-div-2  button")
+    modal2btnTitle.innerText = "Valider"
 
+    //modif hover button bottom GREY et NO click
+    // tant que pas cat et photo (champs rempli et validé !!)
    
+    
+    
+    
+    
+    
+    
     // ajoute une div
     /*********const modalDiv = document.createElement("div");
     modalDiv.textContent = "Nouvelle div";
