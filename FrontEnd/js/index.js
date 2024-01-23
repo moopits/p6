@@ -110,6 +110,12 @@ const createGallery = (data, isModal = false, container = gallery) => {
     });
 }
 
+// create boutton AJOUTER UNE PHOTO
+/***********const section1 = document.querySelector("#modal-section2");
+const button1 = document.createElement("button");
+button1.textContent = "Nouvelle div";
+section1.appendChild(button1);*************/
+
 const createCategories = data => {
 
     const buttonTous = document.createElement("button")
@@ -247,7 +253,7 @@ function event_oui_non() {
     console.log(`testModalFunction =` + testModalFunction)
 }
 
-
+// appel fonction 1 seul fois (imperatif) id dans var global
 event_oui_non()
     
   /*
