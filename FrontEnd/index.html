@@ -98,8 +98,26 @@
 							<div id="modal-section-div-1" class="gallery">
 							</div>
 							<div id="modal-section-div-2">
-								<hr>
-								<button id="modal-btn-ajouter" class="styleFontShape">Ajouter une photo</button>
+								<!--Display 'block' modal 2-->
+								<section id="show-on-off" class="show-on-off">	
+									<form id="sendWorkForm" class="style-form" action="http://localhost:5678/api/categories" method="post">
+										<label for="name">Titre</label>
+										<input type="text" name="nom" placeholder="Nom du fichier">
+										<label for="name">Catégories</label>
+										<select id="select-option" name="choix">
+											<option value="1">choix 1</option>
+											<option value="2">Choix 2</option>
+											<option value="3">Choix 3</option>
+										</select>
+										<hr>
+										<input id="modal-btn-valider" class="styleFontShape" type="submit" value="Valider">
+									</form>
+								</section>
+								<!-- fin de formulaire modal 2-->				
+								<div id="display-btn-hr" class="display-btn-hr">
+									<hr>
+									<button id="modal-btn-ajouter" class="styleFontShape">Ajouter une photo</button>
+								</div>
 							</div>
 						</section>
 					</div>
@@ -117,7 +135,7 @@
 				
 
 				
-				<section id="contact" class="display">	
+				<!--<section id="modal2-form" class="modal2-form-display">	
 					<form id="sendWorkForm" action="http://localhost:5678/api/categories" method="post">
 						<label for="name">Titre</label>
 						<input type="text" name="nom" placeholder="Nnom du fichier">
@@ -128,7 +146,7 @@
 						</select>
 						<input type="submit" value="Valider">
 					</form>
-				</section>
+				</section>-->
 				
 
 

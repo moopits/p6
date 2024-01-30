@@ -60,35 +60,66 @@ modalBtnArrow.addEventListener('click', () => {
     const modal2h2 = document.querySelector(".modal-main h2")
     modal2h2.innerText = "Ajout photo"
     // modif texte btn vert bottom
+    //**************** */
     const modal2btnTitle = document.querySelector("#modal-section-div-2  button")
     modal2btnTitle.innerText = "Valider"
 
-    // get categories
-    const categoriesForm = []
+    // get categories name for formulaire modal 2
+    var categoriesForm = []
+    const selectionOption = document.getElementById('select-option')
+    console.log(selectionOption)
+    selectionOption.innerHTML = ''
     getCategories().then(data => {
         console.log(data)
         for (let i = 0; i < data.length; i++) {
             const category = data[i];
-            console.log(`Category ${i + 1}: ${category.name}`);
-            console.log(`id = ${data[i].id}`)
-            categoriesForm[i] = data[i].name
-            console.log(categoriesForm[i])
+            //console.log(`Category ${i}: ${category.name}`);
+            //console.log(`id = ${data[i].id}`)
+            //categoriesForm[i] = data[i].name
+            //console.log(categoriesForm[i])
+            
+            let opt = null
+            if(i === 0) {
+                opt = document.createElement('option')
+                opt.setAttribute("value", "0")
+                opt.innerText = ""
+                selectionOption.appendChild(opt)
+            }     
+            opt = document.createElement('option')
+            opt.setAttribute("value", `${data[i].id}`)
+            opt.innerText = data[i].name
+            selectionOption.appendChild(opt)
         }
     })
+    // modif form modal 2
+    const showOnOff = document.querySelector('#show-on-off')
+    console.log(showOnOff) // verif
+    showOnOff.style.display = 'block'
+
+    const showOnOffBtnHR = document.querySelector('#display-btn-hr')
+    console.log(showOnOffBtnHR) // verif
+    showOnOffBtnHR.style.display = 'none'
+
+    /*const selectionOption = document.getElementById('select-option')
+    console.log(selectionOption)
+    selectionOption.innerHTML = ''*/
+    //for (let i = 0; i < categoriesForm.length; i++) {     
+        /*const opt = document.createElement('option')
+        opt.setAttribute("value", "1")
+        opt.innerText = categoriesForm[1]
+        selectionOption.appendChild(opt)
+        console.log(categoriesForm.length)
+    //}*/
+    
+
+
+
+
 
 
     
     //modif hover button bottom GREY et NO click
-    // tant que pas cat et photo (champs rempli et validé !!)
-   
-    
-    
-    
-    
-    
-    
-
-
+    // tant que pas cat et photo (champs rempli et validé !!
 
 })
 
