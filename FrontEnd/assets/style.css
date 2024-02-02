@@ -240,8 +240,8 @@ li:hover {
 
 }
 
-.show-on-off{
-	display: none;
+.show-on-off {
+	/*display: none;*/
 	width: 100%;
 	height: 100%;
 	display:flex;
@@ -865,7 +865,7 @@ input[type="submit"] {
 }
 
 .modal-main .modal-style .modal-style-2 {  /* style modal 2 */
-	width: 100%;
+	width: fit-content;
 	height: fit-content;
 	background-color: #E8F1F6; /* a enlever */
 	display: flex;
@@ -890,11 +890,11 @@ input[type="submit"] {
 	margin: 0px;
 }
 
-.modal-1-display{
+.modal-1-display {
 	display: inline-block;
 }
 
-.modal-2-display{
+.modal-2-display {
 	display: none;
 }
 
@@ -906,9 +906,6 @@ input[type="submit"] {
 	align-items: center;
 }
 
-#modal-section-div-1 {
-
-}
 
 #modal-section-div-2 {
 	width: 100%;

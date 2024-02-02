@@ -1,3 +1,4 @@
+
 // get div element where figure element will be as child, with class='gallery'
 export const gallery = document.querySelector('.gallery')
 console.log(gallery)

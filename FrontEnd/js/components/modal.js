@@ -17,23 +17,37 @@ modalBtnArrow.addEventListener('click', () => {
     console.log('click Arrow')
 })
 
-    // cré contenu modal 2
+    // cré contenu MODAL 2 click AJOUTER PHOTO
     modalBtnAjouter.addEventListener('click', () => {
     // display: inline-block ARROW modal 2 (show)
     modalBtnArrow.style.display = "inline-block"
 
+    // efface les image (FIGURE) par removeChild
+    // le html sera donc affiché correctement
+    const modalsectionDiv1 = document.getElementById('modal-section-div-1')  
+    for (const ac of modalsectionDiv1.querySelectorAll("figure")) {
+        modalsectionDiv1.removeChild(ac)
+        //containaireGallery.appendChild(paragraphe);
+        console.log(ac)
+    }
+
     // 
     console.log('click Ajouter -> go modal 2')
     const modalSectionDiv1 = document.getElementById("modal-section-div-1")
-    modalSectionDiv1.innerHTML = ""
+    //modalSectionDiv1.innerHTML = ""
     console.log(modalSectionDiv1)
     modalSectionDiv1.classList.remove('gallery')
     //console.log(modalSection.classList.value)
     //console.log(modalSection.getAttribute('classList'))
     modalSectionDiv1.classList.add('modal-style')
 
+    const showContainer = document.getElementById('show-container')
+    console.log('showContainer = ' + showContainer)
+
+
     //cré div pour icon, btn, text modal 2 (modalSectionDiv1)
-    const div1 = document.createElement("div") // container
+    // changé pour html car STATIC
+    /*const div1 = document.createElement("div") // container
     div1.className = "modal-style-2"
     const iconImg = document.createElement("i") // ele
     iconImg.classList.add("fa-regular")
@@ -49,12 +63,13 @@ modalBtnArrow.addEventListener('click', () => {
     textSpanBtnGrey.className = "textSpanBtnGrey"
     textSpanBtnGrey.innerText = "jpg, png : 4mo max"
     div1.appendChild(textSpanBtnGrey)
-    modalSectionDiv1.appendChild(div1)
+    modalSectionDiv1.appendChild(div1)*/
 
     // modif class btn modal 2 bottom (styleFontShape->styleFontShape3)
     const modalBtnAjouter = document.getElementById("modal-btn-ajouter")
     modalBtnAjouter.classList.remove('styleFontShape')
     modalBtnAjouter.classList.add('styleFontShape3')
+    
 
     // modif titre H2 modal 2
     const modal2h2 = document.querySelector(".modal-main h2")
@@ -65,19 +80,12 @@ modalBtnArrow.addEventListener('click', () => {
     modal2btnTitle.innerText = "Valider"
 
     // get categories name for formulaire modal 2
-    var categoriesForm = []
     const selectionOption = document.getElementById('select-option')
     console.log(selectionOption)
     selectionOption.innerHTML = ''
     getCategories().then(data => {
         console.log(data)
         for (let i = 0; i < data.length; i++) {
-            const category = data[i];
-            //console.log(`Category ${i}: ${category.name}`);
-            //console.log(`id = ${data[i].id}`)
-            //categoriesForm[i] = data[i].name
-            //console.log(categoriesForm[i])
-            
             let opt = null
             if(i === 0) {
                 opt = document.createElement('option')

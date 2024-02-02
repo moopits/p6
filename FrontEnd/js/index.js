@@ -1,4 +1,4 @@
-import { gallery, filterContainer, loginA, galleryModal } from "./components/domLinker.js";
+import { gallery, filterContainer, loginA, galleryModal, modal } from "./components/domLinker.js";
 import { getWorks } from "./components/api.js";
 import { getCategories } from "./components/api.js";
 import { displayModal } from "./components/modal.js";
@@ -36,7 +36,23 @@ if (localStorage.token) {
     console.log(b_modifier)
     b_modifier.addEventListener("click", () => {
         console.log('modifier -> click ON -> modal show()')
+        // permet affichage correct des boutton div2
+        const showOnOff = document.querySelector('#show-on-off')
+        console.log(showOnOff) // verif
+        showOnOff.style.display = 'none'
         displayModal()
+
+        /*  A voir si utilise-> insertion div entre figure modal
+        const containaireGallery = document.createElement('div')
+        gallery.appendChild(containaireGallery)
+        console.log('************')
+        console.log(gallery)
+        // Déplacement des paragraphes dans la div
+        for (const paragraphe of gallery.querySelectorAll("figure")) {
+            containaireGallery.appendChild(paragraphe);
+            console.log(paragraphe)
+        }*/
+
     })
 
     // getion logOut ( retour page acceuil - index.html)
@@ -57,9 +73,13 @@ if (localStorage.token) {
  * @param {HTMLElement} container - container gallery from home page or modal
  */
 const createGallery = (data, isModal = false, container = gallery) => {
-    container.innerHTML = ''
+    //container.innerHTML = ''
+    //display ON OFF a la place
+    const showContainer = document.getElementById('show-container')
+    console.log('showContainer = ' + showContainer)
 
     data.forEach(item => {
+        
         const figure = document.createElement('figure')
         figure.className = 'setRelative'
         const img = document.createElement('img')
@@ -108,6 +128,7 @@ const createGallery = (data, isModal = false, container = gallery) => {
     
         container.appendChild(figure)
     });
+
 }
 
 // create boutton AJOUTER UNE PHOTO
