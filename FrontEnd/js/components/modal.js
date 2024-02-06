@@ -65,7 +65,6 @@ modalBtnAjouter.addEventListener('click', () => {
 
         preview.src = URL.createObjectURL(file)
         preview.style.display = "block"
-
     })
 
     const textSpanBtnGrey = document.createElement("span") // ele
