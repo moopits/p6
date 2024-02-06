@@ -74,7 +74,7 @@
 					<div class="gallery showFigCaption">
 					</div>
 				</section>
-				<!--SECTION FORMULAIRE CONTACT-->	
+				<!--SECTION FORMULAIRE CONTACT-->
 				<section id="contact">
 					<h2>Contact</h2>
 					<p>Vous avez un projet ? Discutons-en !</p>
@@ -91,34 +91,31 @@
 				<!--FENETRE MODAL-->
 				<dialog id="modal" class="modal">
 					<div class="modal-main">
-						<button id="modal-btn-arrow"><i class="fa-solid fa-arrow-left styleArw"></i></button> <!-- display NONE-->
+						<button id="modal-btn-arrow"><i class="fa-solid fa-arrow-left styleArw"></i></button>
+						<!-- display NONE-->
 						<button id="modal-btn-close"><i class="fa-solid fa-xmark sizeCls "></i></button>
 						<h2>Galerie photo</h2> <!-- DOM modif-->
 						<section id="container-button-gallery">
 							<div id="modal-section-div-1" class="gallery">
-								<div id="show-container" class="modal-style-2 modal-2-display">
-									<i class="fa-regular fa-image icon-img-size"></i>
-									<button class="styleFontShape2">+ Ajouter photo</button>
-									<span class="textSpanBtnGrey">jpg, png : 4mo max</span>
-								</div>
 							</div>
 							<div id="modal-section-div-2">
 								<!--Display 'block' modal 2-->
-								<section id="show-on-off" class="show-on-off">	
-									<form id="sendWorkForm" class="style-form" action="http://localhost:5678/api/categories" method="post">
+								<section id="show-on-off" class="show-on-off">
+									<form id="sendWorkForm" class="style-form">
 										<label for="name">Titre</label>
 										<input type="text" name="nom" placeholder="Nom du fichier">
 										<label for="name">Catégories</label>
 										<select id="select-option" name="choix">
-											<option value="1">choix 1</option>
+											<!-- <option value="1">choix 1</option>
 											<option value="2">Choix 2</option>
-											<option value="3">Choix 3</option>
+											<option value="3">Choix 3</option> -->
 										</select>
 										<hr>
-										<input id="modal-btn-valider" class="styleFontShape" type="submit" value="Valider">
+										<input id="modal-btn-valider" class="styleFontShape" type="submit"
+											value="Valider">
 									</form>
 								</section>
-								<!-- fin de formulaire modal 2-->				
+								<!-- fin de formulaire modal 2-->
 								<div id="display-btn-hr" class="display-btn-hr">
 									<hr>
 									<button id="modal-btn-ajouter" class="styleFontShape">Ajouter une photo</button>
@@ -137,9 +134,9 @@
 						</div>
 					</div>
 				</dialog>
-				
 
-				
+
+
 				<!--<section id="modal2-form" class="modal2-form-display">	
 					<form id="sendWorkForm" action="http://localhost:5678/api/categories" method="post">
 						<label for="name">Titre</label>
@@ -152,7 +149,7 @@
 						<input type="submit" value="Valider">
 					</form>
 				</section>-->
-				
+
 
 
 			</main>

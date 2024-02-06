@@ -73,10 +73,16 @@ if (localStorage.token) {
  * @param {HTMLElement} container - container gallery from home page or modal
  */
 const createGallery = (data, isModal = false, container = gallery) => {
-    //container.innerHTML = ''
+    container.innerHTML = ''
+    if(isModal) {
+        
+        console.log("if(!isModal)")
+    }
+    
     //display ON OFF a la place
     const showContainer = document.getElementById('show-container')
-    console.log('showContainer = ' + showContainer)
+    console.log('showContainer')
+    console.log(showContainer)
 
     data.forEach(item => {
         

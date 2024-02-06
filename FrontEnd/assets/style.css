@@ -241,10 +241,10 @@ li:hover {
 }
 
 .show-on-off {
-	/*display: none;*/
+	display: none;
 	width: 100%;
 	height: 100%;
-	display:flex;
+	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	/*background-color: #8b0505;*/
@@ -294,7 +294,7 @@ input[type="submit"] {
 	font-weight: 700;
 	font-size: 14px;
 	line-height: 17px;
-	letter-spacing: 0em;	
+	letter-spacing: 0em;
 	color: white;
 	background-color: #1D6154;
 	margin: 2em auto;
@@ -563,7 +563,8 @@ input[type="submit"] {
 	background-color: white;
 }
 
-#modal-btn-close { /* button close */
+#modal-btn-close {
+	/* button close */
 	position: absolute;
 	top: 20px;
 	right: 20px;
@@ -604,6 +605,7 @@ input[type="submit"] {
 	width: auto;
 	/*border-bottom: 1px solid rgb(0, 0, 0);*/
 }
+
 /* position icon TRASH-CAN fentre modal */
 .div-absolute {
 	position: absolute;
@@ -616,16 +618,19 @@ input[type="submit"] {
 	border: 0px;
 	background-color: #000000;
 	display: flex;
-	justify-content:center;
+	justify-content: center;
 	align-items: center;
 }
+
 .setRelative {
 	position: relative;
 }
+
 .fa-solid {
 	color: #ffffff;
 	font-size: 11px;
 }
+
 .center {
 	display: flex;
 	justify-content: center;
@@ -654,6 +659,7 @@ input[type="submit"] {
 	text-align: center;
 	border-radius: 60px;
 }
+
 .styleFontShape:hover {
 	background-color: #1D6154;
 	color: white;
@@ -681,6 +687,7 @@ input[type="submit"] {
 	text-align: center;
 	border-radius: 60px;
 }
+
 .styleFontShape2:hover {
 	background-color: #A7A7A7;
 	color: #ffffff;
@@ -708,42 +715,46 @@ input[type="submit"] {
 	text-align: center;
 	border-radius: 60px;
 }
+
 .styleFontShape3:hover {
 	background-color: #A7A7A7;
 	color: #ffffff;
 }
+
 /************* modal oui/non *************/
 
-  
-  .modal-header {
+
+.modal-header {
 	padding: 10px;
-  }
-  
-  .modal-body {
+}
+
+.modal-body {
 	padding: 10px;
-  }
-  
-  .modal-footer {
+}
+
+.modal-footer {
 	padding: 10px;
 	text-align: right;
-  }
-  
-  .btn {
+}
+
+.btn {
 	padding: 10px 20px;
 	border-radius: 5px;
-  }
-  
-  .btn-primary {
+}
+
+.btn-primary {
 	background-color: #007bff;
 	color: #fff;
-  }
-  
-  .btn-secondary {
+}
+
+.btn-secondary {
 	background-color: #999;
 	color: #fff;
-  }
-  /************ fin modal oui/non ***********/
-#modalDialogBkgGrey { /* shape container dialog */
+}
+
+/************ fin modal oui/non ***********/
+#modalDialogBkgGrey {
+	/* shape container dialog */
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -755,6 +766,7 @@ input[type="submit"] {
 	z-index: 10;
 	background-color: rgba(0, 0, 0, 0.3);
 }
+
 #modalDialogBkgGrey_realModal {
 	box-sizing: border-box;
 	width: 140px;
@@ -774,6 +786,7 @@ input[type="submit"] {
 
 	/*box-shadow: #000000;*/
 }
+
 #styleH1Dialog {
 	text-align: center;
 	margin-top: 10px;
@@ -781,41 +794,46 @@ input[type="submit"] {
 	font-family: Work Sans;
 	font-size: 14px;
 	font-weight: 800;
-	color: #8b0505;	
+	color: #8b0505;
 }
-.styleDivDialog { /* container button OUI/NON */
+
+.styleDivDialog {
+	/* container button OUI/NON */
 	width: 100%;
 	height: 100%;
 	display: flex;
-	justify-content:space-evenly;
-	align-items:center;
+	justify-content: space-evenly;
+	align-items: center;
 }
+
 .styleButtDialog {
-		font-family: 'Syne';
-		font-weight: 400;
-		font-size: 10px;
-		color: #1D6154;
-		background-color: #ffffff;
-		border: 1px solid #1D6154;
-		width: auto;
-		padding-left: 1em;
-		padding-right: 1em;
-		padding-bottom: 0.4em;
-		padding-top: 0.4em;
-		/*margin-left: 10px;
+	font-family: 'Syne';
+	font-weight: 400;
+	font-size: 10px;
+	color: #1D6154;
+	background-color: #ffffff;
+	border: 1px solid #1D6154;
+	width: auto;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 0.4em;
+	padding-top: 0.4em;
+	/*margin-left: 10px;
 		margin-right: 10px;
 		margin-bottom: 10px;
 		margin-top: 10px;*/
-		text-align: center;
-		border-radius: 60px;
+	text-align: center;
+	border-radius: 60px;
 }
+
 .styleButtDialog:hover {
 	background-color: #1D6154;
 	color: white;
 	cursor: pointer;
 }
 
-#modal-btn-arrow { /* button arrow */
+#modal-btn-arrow {
+	/* button arrow */
 	position: absolute;
 	top: 20px;
 	left: 20px;
@@ -824,7 +842,8 @@ input[type="submit"] {
 	cursor: pointer;
 	height: auto;
 	width: auto;
-	display: none; /* inline-block; -> modal 2 */
+	display: none;
+	/* inline-block; -> modal 2 */
 	padding: 0px;
 	/*background-color: transparent;*/
 	/*color: black;*/
@@ -839,19 +858,23 @@ input[type="submit"] {
 	font-size: 17px;
 	margin-top: 0px;
 }
+
 .styleArw {
 	font-size: 20px;
 }
+
 .modal-main #modal-btn-arrow i,
 .modal-main #modal-btn-close i {
 	color: #000000;
 }
 
-.modal-main .modal-style {  /* style modal 2 */
+.modal-main .modal-style {
+	/* style modal 2 */
 	width: 100%;
 	height: 169px;
 	margin: 0px 0px 5px;
-	background-color: #E8F1F6; /* a enlever */
+	background-color: #E8F1F6;
+	/* a enlever */
 	border-radius: 3px;
 	display: flex;
 	justify-content: center;
@@ -864,10 +887,12 @@ input[type="submit"] {
 	/*border-bottom: 1px solid rgba(179, 179, 179, 1);*/
 }
 
-.modal-main .modal-style .modal-style-2 {  /* style modal 2 */
-	width: fit-content;
+.modal-main .modal-style .modal-style-2 {
+	/* style modal 2 */
+	width: 100%;
 	height: fit-content;
-	background-color: #E8F1F6; /* a enlever */
+	background-color: #E8F1F6;
+	/* a enlever */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -906,6 +931,7 @@ input[type="submit"] {
 	align-items: center;
 }
 
+#modal-section-div-1 {}
 
 #modal-section-div-2 {
 	width: 100%;
@@ -914,7 +940,7 @@ input[type="submit"] {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items:center;
+	align-items: center;
 	/*background-color: #B1663C;*/
 }
 
@@ -930,7 +956,8 @@ input[type="submit"] {
 	border-style: none;*/
 	width: 100%;
 	border: none;
-	border-top: 1px solid #000; /* Couleur de la ligne (noir dans cet exemple) */
+	border-top: 1px solid #000;
+	/* Couleur de la ligne (noir dans cet exemple) */
 	margin: 20px 0 20px;
 }
 
@@ -945,6 +972,7 @@ input[type="submit"] {
 	background-color: #CBD6DC;
 	border-color: #CBD6DC;
 }
+
 .btn-color-grey-modal-2:hover {
 	color: #306685;
 	background-color: #CBD6DC;
@@ -975,6 +1003,7 @@ input[type="submit"] {
 	/*justify-content: center;
 	align-items: center;*/
 }
+
 .style-form input,
 .style-form select {
 	/*height: 1.2rem;*/
@@ -1013,4 +1042,15 @@ input[type="submit"] {
 	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
+}
+
+input[type="file"] {
+	display: none;
+}
+
+.modal-style-2 img {
+	display: none;
+	height: 169px;
+	width: 200px;
+	object-fit: cover;
 }
