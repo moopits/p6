@@ -95,31 +95,32 @@
 						<!-- display NONE-->
 						<button id="modal-btn-close"><i class="fa-solid fa-xmark sizeCls "></i></button>
 						<h2>Galerie photo</h2> <!-- DOM modif-->
-						<section id="container-button-gallery">
+						<section id="modal-body">
 							<div id="modal-section-div-1" class="gallery">
 							</div>
 							<div id="modal-section-div-2">
-								<!--Display 'block' modal 2-->
-								<section id="show-on-off" class="show-on-off">
-									<form id="sendWorkForm" class="style-form">
-										<label for="name">Titre</label>
-										<input type="text" name="nom" placeholder="Nom du fichier">
-										<label for="name">Catégories</label>
-										<select id="select-option" name="choix">
-											<!-- <option value="1">choix 1</option>
-											<option value="2">Choix 2</option>
-											<option value="3">Choix 3</option> -->
-										</select>
-										<hr>
-										<input id="modal-btn-valider" class="styleFontShape" type="submit"
-											value="Valider">
-									</form>
-								</section>
-								<!-- fin de formulaire modal 2-->
-								<div id="display-btn-hr" class="display-btn-hr">
+								<form id="sendWorkForm" class="style-form">
+									<div class="modal-style-2">
+										<i id="icon-img" class="fa-regular fa-image icon-img-size"></i>
+										<label id="label-input-file" class="styleFontShape2" for="file-upload">+ Ajouter
+											photo</label>
+										<input id="file-upload" type="file">
+										<img id="preview" alt="file uploaded">
+										<span class="textSpanBtnGrey">jpg, png : 4mo max</span>
+									</div>
+									<label for="name">Titre</label>
+									<input type="text" id="name" placeholder="Titre">
+									<label for="name">Catégories</label>
+									<select id="select-option" name="choix">
+									</select>
 									<hr>
-									<button id="modal-btn-ajouter" class="styleFontShape">Ajouter une photo</button>
-								</div>
+									<input id="modal-btn-valider" class="styleFontShape" type="submit" value="Valider">
+								</form>
+							</div>
+							<!-- fin de formulaire modal 2-->
+							<div id="display-btn-hr" class="display-btn-hr">
+								<hr>
+								<button id="modal-btn-ajouter" class="styleFontShape">Ajouter une photo</button>
 							</div>
 						</section>
 					</div>
@@ -135,8 +136,6 @@
 					</div>
 				</dialog>
 
-
-
 				<!--<section id="modal2-form" class="modal2-form-display">	
 					<form id="sendWorkForm" action="http://localhost:5678/api/categories" method="post">
 						<label for="name">Titre</label>
@@ -149,8 +148,6 @@
 						<input type="submit" value="Valider">
 					</form>
 				</section>-->
-
-
 
 			</main>
 		</div>

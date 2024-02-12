@@ -1,10 +1,5 @@
 import { email, password, formLogIn } from "./components/domLinker.js";
 import { postLogin } from "./components/api.js";
-//import { formLogIn } from "./components/domLinker"
-//console.log(formLogIn)
-
-
-
 
 // infos link http & local
 console.log(import.meta.url);
@@ -62,19 +57,5 @@ formLogIn.addEventListener('submit', (event) => {
     // RESET les champs a vides
     formLogIn.reset();
   }
-  
-  
-  // Si les champs sont valides, soumettre le formulaire
-  // Annule événement pour qu'il n'execute pas de post ou autre
-  // Obtention valeurs des champs sur id
-  // const email = formLogIn.querySelector('#email').value;
-  // const password = formLogIn.querySelector('#password').value;
-  // Stock les valeurs des champs
-  // const variables = { email, password };
-  // // Affiche valeurs des champs en console (check ONLY)
-  // console.log(variables);
-  // // stringify
-  // console.log(JSON.stringify(variables))
-
 });
 

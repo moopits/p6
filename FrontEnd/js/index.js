@@ -1,4 +1,4 @@
-import { gallery, filterContainer, loginA, galleryModal, modal } from "./components/domLinker.js";
+import { gallery, filterContainer, loginA, galleryModal, modal, selectCategory } from "./components/domLinker.js";
 import { getWorks } from "./components/api.js";
 import { getCategories } from "./components/api.js";
 import { displayModal } from "./components/modal.js";
@@ -12,61 +12,6 @@ let testModal = 0
 let modifierWorksItemId = 0
 const keepCategoriesName = []
 
-
-// condition IF sur login page OK
-if (localStorage.token) {
-    loginA.innerHTML = 'logout'
-    console.log("token EXISTE")
-    console.log(localStorage.getItem('token'))
-    // changer href immediatement
-    const getA = document.querySelector('#loginA')
-    console.log(getA)
-    getA.setAttribute('href', './index.html')
-
-    // Show (mode edition) & (modifier)
-    const showON = document.querySelector('.setBlackAdmin')
-    showON.classList.remove("showOn")
-    const showON2 = document.querySelector('.containerProjets span')
-    showON2.classList.remove("showOn")
-    console.log(showON)
-
-
-    // gestion bouton modifier (modal)
-    const b_modifier = document.querySelector('#clic_b_modifier')
-    console.log(b_modifier)
-    b_modifier.addEventListener("click", () => {
-        console.log('modifier -> click ON -> modal show()')
-        // permet affichage correct des boutton div2
-        const showOnOff = document.querySelector('#show-on-off')
-        console.log(showOnOff) // verif
-        showOnOff.style.display = 'none'
-        displayModal()
-
-        /*  A voir si utilise-> insertion div entre figure modal
-        const containaireGallery = document.createElement('div')
-        gallery.appendChild(containaireGallery)
-        console.log('************')
-        console.log(gallery)
-        // Déplacement des paragraphes dans la div
-        for (const paragraphe of gallery.querySelectorAll("figure")) {
-            containaireGallery.appendChild(paragraphe);
-            console.log(paragraphe)
-        }*/
-
-    })
-
-    // getion logOut ( retour page acceuil - index.html)
-    const l_logOut = document.querySelector('.clic_l_logOut')
-    console.log(l_logOut)
-    l_logOut.addEventListener("click", () => {
-        console.log('click OUT')
-        // changer nom lien
-        loginA.innerHTML = 'logIn'
-        //localStorage.removeItem("token")
-        localStorage.removeItem("token")
-    })
-}
-
 /**
  * Create Gallery in function of data received from API
  * @param {Array} data - Array of object data get works
@@ -74,74 +19,47 @@ if (localStorage.token) {
  */
 const createGallery = (data, isModal = false, container = gallery) => {
     container.innerHTML = ''
-    if(isModal) {
-        
+    if (isModal) {
+
         console.log("if(!isModal)")
     }
-    
-    //display ON OFF a la place
-    const showContainer = document.getElementById('show-container')
-    console.log('showContainer')
-    console.log(showContainer)
 
     data.forEach(item => {
-        
         const figure = document.createElement('figure')
         figure.className = 'setRelative'
         const img = document.createElement('img')
         img.src = item.imageUrl
         img.alt = item.title
         figure.appendChild(img)
-        //const figCaption = document.createElement('figcaption')
-        // CONTROL AFFICH texte ONLY INDEX.html
-        // &&
-        if(isModal) {
+
+        if (isModal) {
             console.log('modal false/true = ' + isModal)
             const div = document.createElement('div')
             // click ON for delete -GET id categorie
             div.addEventListener('click', () => {
                 console.log('click ON  ' + 'item.id= ' + item.id + ' item.catId= ' + item.categoryId)
-                console.log(`testModal = ${testModal = testModal + 1}` )
+                console.log(`testModal = ${testModal = testModal + 1}`)
                 // modal CONFIRM supp pic Modal WORKS
                 modifierWorks(item.id)
-                /********if (result) {
-                  // Supprimer l'élément
-                  console.log('supprimé !!')
-                  //deleteById(item.id)
-                } else {
-                  // Ne pas supprimer l'élément
-                  console.log('NON supprimé !!')
-                }    ************////            
-
             })
             div.className = 'div-absolute'
 
-            /*const span = document.createElement('span')
-            span.classList = 'center'
-            div.appendChild(span) */
-
             const icon = document.createElement('i')
             icon.classList = 'fa-solid fa-trash-can'
-            /*span.appendChild(icon)    */   
-            div.appendChild(icon) 
+            /*span.appendChild(icon)    */
+            div.appendChild(icon)
             figure.appendChild(div)
         } else {
             console.log('non modal')
             const figCaption = document.createElement('figcaption')
-            figCaption.innerHTML = item.title  
+            figCaption.innerHTML = item.title
             figure.appendChild(figCaption)
         }
-    
+
         container.appendChild(figure)
     });
 
 }
-
-// create boutton AJOUTER UNE PHOTO
-/***********const section1 = document.querySelector("#modal-section2");
-const button1 = document.createElement("button");
-button1.textContent = "Nouvelle div";
-section1.appendChild(button1);*************/
 
 const createCategories = data => {
 
@@ -212,14 +130,20 @@ const createCategories = data => {
         // add <button> 'name from categories db' in <div class="containerButtons">
         filterContainer.appendChild(buttonOthers)
     }
-    /*   if (localStorage.token) {
-           console.log("token EXISTE")
-           const showON = document.querySelector('.containerButtons')
-           showON.classList.remove("showOn")
-           console.log(showON)
-       }*/
-    console.log(document.querySelectorAll('.containerButtons button'))
-    console.log(document.querySelector('.containerButtons').children.length + ' enfant')
+}
+
+// get categories name for formulaire modal 2
+const createSelectCategories = () => {
+    selectCategory.innerHTML = ''
+    getCategories().then(data => {
+        console.log(data)
+        for (let i = 0; i < data.length; i++) {
+            const opt = document.createElement('option')
+            opt.setAttribute("value", `${data[i].id}`)
+            opt.innerText = data[i].name
+            selectCategory.appendChild(opt)
+        }
+    })
 }
 
 /* build gallery index.html & modal */
@@ -227,18 +151,62 @@ getWorks().then(data => {
     createGallery(data)
     createGallery(data, true, galleryModal)
 })
-/* build categories */
-if (!localStorage.token) { // hide en logOut
-    getCategories().then(data => createCategories(data))
 
+
+/* build categories */
+getCategories().then(data => {
+    if (!localStorage.token) { // hide en logOut
+        createCategories(data)
+    }
+    createSelectCategories()
+})
+
+// condition IF sur login page OK
+if (localStorage.token) {
+    loginA.innerHTML = 'logout'
+    console.log("token EXISTE")
+    console.log(localStorage.getItem('token'))
+    // changer href immediatement
+    const getA = document.querySelector('#loginA')
+    console.log(getA)
+    getA.setAttribute('href', './index.html')
+
+    // Show (mode edition) & (modifier)
+    const showON = document.querySelector('.setBlackAdmin')
+    showON.classList.remove("showOn")
+    const showON2 = document.querySelector('.containerProjets span')
+    showON2.classList.remove("showOn")
+    console.log(showON)
+
+
+    // gestion bouton modifier (modal)
+    const b_modifier = document.querySelector('#clic_b_modifier')
+    console.log(b_modifier)
+    b_modifier.addEventListener("click", () => {
+        console.log('modifier -> click ON -> modal show()')
+        displayModal()
+    })
+
+    // getion logOut ( retour page acceuil - index.html)
+    const l_logOut = document.querySelector('.clic_l_logOut')
+    console.log(l_logOut)
+    l_logOut.addEventListener("click", () => {
+        console.log('click OUT')
+        // changer nom lien
+        loginA.innerHTML = 'logIn'
+        //localStorage.removeItem("token")
+        localStorage.removeItem("token")
+    })
 }
+
+
 
 // GESTION DELETE PIC MODAL
 function modifierWorks(id) {
     //////////////// console.log(id)
     document.getElementById("modalDialogBkgGrey").show()
     modifierWorksItemId = id
- }
+}
 
 
 function event_oui_non() {
@@ -252,7 +220,7 @@ function event_oui_non() {
 
         // CLOSE modal
         document.getElementById("modalDialogBkgGrey").close()
-    
+
         /////////////console.log('fetch_response = ' + fetch_response)
         deleteById(modifierWorksItemId)
             .then(() => console.log('4 - fetch_response .then apres deletByid index.js = ' + fetch_response))
@@ -261,9 +229,6 @@ function event_oui_non() {
                 createGallery(data)
                 createGallery(data, true, galleryModal)
             })
-        // RECHARGER les images dasn index.html & modal (IMPORTANT)
-        /* build gallery index.html & modal */
-        //console.log('index.html & modal image BD works TOUS mis à jour !!')
     })
 
     // NON
@@ -282,55 +247,3 @@ function event_oui_non() {
 
 // appel fonction 1 seul fois (imperatif) id dans var global
 event_oui_non()
-    
-  /*
-    const yesButton = modal.querySelector(".btn-primary");
-    yesButton.addEventListener("click", () => {
-      modal.remove();
-      return true;
-    });
-  
-    const noButton = modal.querySelector(".btn-secondary");
-    noButton.addEventListener("click", () => {
-      modal.remove();
-      return false;
-    });*/
- 
-
-
-// SET tuto test
-//const nombres = [2, 3, 4, 4, 2, 2, 2, 4, 4, 5, 5, 6, 6, 7, 5, 32, 3, 4, 5];
-//console.log([...new Set(nombres)]);
-// concatenation tuto test
-// const k = [1,2,3]
-// console.log('cat: ' + k[0])
-
-// // make array button
-// const containerButtons_filter = document.querySelectorAll('.containerButtons button')
-// console.log(typeof(containerButtons_filter))
-// console.log(containerButtons_filter[0])
-// console.log(containerButtons_filter.length)
-
-/*
-var data1 = {
-    username: "johndoe",
-    password: "password123"
-};
-console.log(JSON.stringify(data1))
-
-
-// Vérifiez si la `div` `containerButtons` existe dans le DOM
-if (!document.querySelector('.containerButtons')) {
-    // La `div` `containerButtons` n'existe pas
-    console.log('La div containerButtons existe pas')
-  } else {
-    console.log('La div containerButtons existe')
-
-  }*/
-
-
-
-
-
-
-
