@@ -15,7 +15,8 @@ import {
     titleInput,
     btnValidateAddPhoto,
     formAddPhoto,
-    selectCategory
+    selectCategory,
+    modalMainH2
 } from "./domLinker.js"
 import { postWork, getWorks } from "./api.js"
 import { createGallery } from "../index.js"
@@ -33,11 +34,16 @@ export const displayModal = () => {
 const hideModal = () => modal.style.display = "none"
 
 // HIDE fenetre modal
-modalBtnClose.addEventListener('click', () => hideModal())
+modalBtnClose.addEventListener('click', () => {
+    modalMainH2.innerHTML = 'Galerie photo'
+    hideModal()
+})
 
 // modal 2 ARROW retour modal 1 (to delete work)
 modalBtnArrow.addEventListener('click', () => {
     console.log('click Arrow')
+    console.log(fileUpload)
+    modalMainH2.innerHTML = 'Galerie photo'
     galleryModal.style.display = "grid"
     modalSection2.style.display = "none"
     modalBtnArrow.style.display = "none"
@@ -45,6 +51,7 @@ modalBtnArrow.addEventListener('click', () => {
 })
 
 inputFile.addEventListener('change', () => {
+    console.log(fileUpload)
     const [file] = inputFile.files
     fileUpload = file
 
@@ -83,6 +90,7 @@ modalBtnAjouter.addEventListener('click', () => {
     title = null
     fileUpload = null
     titleInput.value = ''
+    modalMainH2.innerHTML = 'Ajout Photo'
     formIsValid()
 })
 
@@ -98,10 +106,12 @@ const titleIsValid = () => {
 const formIsValid = () => {
     if (fileUploadIsValid() && titleIsValid()) {
         btnValidateAddPhoto.removeAttribute('disabled')
-        btnValidateAddPhoto.style.backgroundColor = '#1D6154';
+        btnValidateAddPhoto.style.backgroundColor = '#1D6154'
+        btnValidateAddPhoto.style.border = '1px solid #1D6154'       
     } else {
         btnValidateAddPhoto.setAttribute('disabled', true)
-        btnValidateAddPhoto.style.backgroundColor = '#CBD6DC';
+        btnValidateAddPhoto.style.backgroundColor = '#A7A7A7'
+        btnValidateAddPhoto.style.border = '1px solid #A7A7A7'
     }
     console.log('formIsValid = ', fileUploadIsValid() && titleIsValid())
 }
