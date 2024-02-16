@@ -65,6 +65,9 @@ inputFile.addEventListener('change', () => {
         preview.style.height = "176px"
     } else {
         alert("Le format de fichier est invalide ou l'image est trop volumineuse")
+        iconImg.style.display = 'block'
+        labelInputFile.style.display = 'block'
+        textSpanBtnGrey.style.display = 'block'
     }
 
     formIsValid()
@@ -107,7 +110,7 @@ const formIsValid = () => {
     if (fileUploadIsValid() && titleIsValid()) {
         btnValidateAddPhoto.removeAttribute('disabled')
         btnValidateAddPhoto.style.backgroundColor = '#1D6154'
-        btnValidateAddPhoto.style.border = '1px solid #1D6154'       
+        btnValidateAddPhoto.style.border = '1px solid #1D6154'
     } else {
         btnValidateAddPhoto.setAttribute('disabled', true)
         btnValidateAddPhoto.style.backgroundColor = '#A7A7A7'
