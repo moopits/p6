@@ -441,15 +441,13 @@ header nav a {
 	margin: auto;
 	background-color: white;
     display: flex;
-	justify-content: center;
-	align-items: center;
-
+	
 }
 
 .footer-nav {
-	width: 1140px;
+	width: 100px;
     display: flex;
-    justify-content:flex-end;
+    justify-content: space-around;
     align-items: center;
 }
 

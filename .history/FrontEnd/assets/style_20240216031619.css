@@ -437,21 +437,10 @@ header nav a {
 }
 
 #footerCenter {
-	width: 100%;
+	width: auto;
 	margin: auto;
-	background-color: white;
-    display: flex;
-	justify-content: center;
-	align-items: center;
-
 }
 
-.footer-nav {
-	width: 1140px;
-    display: flex;
-    justify-content:flex-end;
-    align-items: center;
-}
 
 #containerDiv_a {
 	padding-bottom: 400px;
@@ -1057,7 +1046,4 @@ input[type="file"] {
 	height: 169px;
 	width: 200px;
 	object-fit: cover;
-}
-
-.footer-nav {
 }

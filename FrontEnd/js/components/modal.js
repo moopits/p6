@@ -18,6 +18,7 @@ import {
     selectCategory
 } from "./domLinker.js"
 import { postWork, getWorks } from "./api.js"
+import { createGallery } from "../index.js"
 
 let fileUpload, title
 
@@ -52,6 +53,7 @@ inputFile.addEventListener('change', () => {
     textSpanBtnGrey.style.display = 'none'
 
     if (fileUploadIsValid()) {
+        preview.style.display = "flex"
         preview.src = URL.createObjectURL(file)
         preview.style.height = "176px"
     } else {
@@ -63,6 +65,7 @@ inputFile.addEventListener('change', () => {
 })
 
 titleInput.addEventListener('input', () => {
+    console.log('titleInput = ', titleInput.value)
     titleIsValid()
     formIsValid()
 })
@@ -73,11 +76,19 @@ modalBtnAjouter.addEventListener('click', () => {
     modalSection2.style.display = "block"
     modalBtnArrow.style.display = "block"
     containerBtnAdd.style.display = "none"
+    preview.style.display = "none"
+    iconImg.style.display = 'block'
+    labelInputFile.style.display = 'block'
+    textSpanBtnGrey.style.display = 'block'
+    title = null
+    fileUpload = null
+    titleInput.value = ''
+    formIsValid()
 })
 
 formAddPhoto.addEventListener('submit', e => addWork(e))
 
-const fileUploadIsValid = () => inputFile.size <= 4 * 1024 * 1024 && ["image/jpeg", "image/png"].includes(inputFile.type)
+const fileUploadIsValid = () => fileUpload?.size <= 4 * 1024 * 1024 && ["image/jpeg", "image/png"].includes(fileUpload?.type)
 
 const titleIsValid = () => {
     title = titleInput.value
@@ -92,6 +103,7 @@ const formIsValid = () => {
         btnValidateAddPhoto.setAttribute('disabled', true)
         btnValidateAddPhoto.style.backgroundColor = '#CBD6DC';
     }
+    console.log('formIsValid = ', fileUploadIsValid() && titleIsValid())
 }
 
 

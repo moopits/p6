@@ -447,9 +447,10 @@ header nav a {
 }
 
 .footer-nav {
-	width: 1140px;
+	width: 1440
+	px;
     display: flex;
-    justify-content:flex-end;
+    justify-content: space-around;
     align-items: center;
 }
 

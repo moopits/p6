@@ -17,7 +17,7 @@ const keepCategoriesName = []
  * @param {Array} data - Array of object data get works
  * @param {HTMLElement} container - container gallery from home page or modal
  */
-const createGallery = (data, isModal = false, container = gallery) => {
+export const createGallery = (data, isModal = false, container = gallery) => {
     container.innerHTML = ''
     if (isModal) {
 
