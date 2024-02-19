@@ -16,10 +16,31 @@ import {
     btnValidateAddPhoto,
     formAddPhoto,
     selectCategory,
-    modalMainH2
+    modalMainH2,
+    //formAddPhotoInput0,
 } from "./domLinker.js"
 import { postWork, getWorks } from "./api.js"
 import { createGallery } from "../index.js"
+
+
+
+function pathReset(file) {
+    
+}
+
+    //fileUpload = file
+
+    /*const reader = new FileReader()
+    reader.onload = () => {
+        if (reader.readyState === 2) {
+            preview.src = reader.result
+        }
+    }
+    reader.readAsDataURL(file)*/
+
+
+
+
 
 let fileUpload, title
 
@@ -50,10 +71,23 @@ modalBtnArrow.addEventListener('click', () => {
     containerBtnAdd.style.display = "block"
 })
 
-inputFile.addEventListener('change', () => {
+inputFile.addEventListener('change', (event) => {
     console.log(fileUpload)
+
+    //check 'event'
+    console.log(event)
+
+    // save array file
     const [file] = inputFile.files
     fileUpload = file
+
+    // show infos file & reset file path
+    pathReset(file)
+    //formAddPhotoInput0.value = ""
+    inputFile.value = ''
+
+    console.log(fileUpload)
+    console.log(file)
 
     iconImg.style.display = 'none'
     labelInputFile.style.display = 'none'
@@ -111,11 +145,12 @@ const formIsValid = () => {
         btnValidateAddPhoto.removeAttribute('disabled')
         btnValidateAddPhoto.style.backgroundColor = '#1D6154'
         btnValidateAddPhoto.style.border = '1px solid #1D6154'
+        btnValidateAddPhoto.style.cursor = 'pointer'
     } else {
         btnValidateAddPhoto.setAttribute('disabled', true)
         btnValidateAddPhoto.style.backgroundColor = '#A7A7A7'
         btnValidateAddPhoto.style.border = '1px solid #A7A7A7'
-    }
+        btnValidateAddPhoto.style.cursor = 'default'    }
     console.log('formIsValid = ', fileUploadIsValid() && titleIsValid())
 }
 
@@ -124,7 +159,7 @@ const formIsValid = () => {
 const addWork = event => {
     event.preventDefault();
 
-    const image = inputFile.files[0];
+    const image = fileUpload // inputFile.files[0];
 
     const formData = new FormData();
     formData.append("title", title);

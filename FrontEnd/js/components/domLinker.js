@@ -37,3 +37,4 @@ export const titleInput = document.getElementById('title')
 export const btnValidateAddPhoto = document.getElementById('modal-btn-valider')
 export const formAddPhoto = document.getElementById('sendWorkForm')
 export const modalMainH2 = document.querySelector('.modal-main h2')
+//export const formAddPhotoInput0 = formAddPhoto.getElementsByTagName ('input')[0]

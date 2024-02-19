@@ -678,6 +678,7 @@ input[type="submit"] {
 	height: 36px;
 	background-color: #A7A7A7;
 	border: 1px solid #A7A7A7;
+	cursor: default;
 }
 
 .styleFontShape:hover {
